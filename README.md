@@ -13,3 +13,11 @@ $ cd ..
 $ sh brew.sh
 $ sh cask.sh
 ```
+
+## macOS
+
+For specific macOS settings run
+
+```sh
+$ ./macos
+```
