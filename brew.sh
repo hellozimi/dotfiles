@@ -35,7 +35,6 @@ brew install git
 brew install git-extras
 brew install imagemagick --with-webp
 brew install ssh-copy-id
-brew install macvim
 brew install node
 brew install npm
 brew install openssl
