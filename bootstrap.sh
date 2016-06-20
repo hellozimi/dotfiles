@@ -4,6 +4,13 @@ cd "$(dirname "${BASH_SOURCE}")";
 
 git pull origin master;
 
+function install_fonts() {
+    POWERLINE_GIT="https://github.com/powerline/fonts"
+    git clone $POWERLINE_GIT powerline-fonts
+    sh ./powerline-fonts/install.sh
+    rm -rf powerline-fonts
+}
+
 function run_it() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
@@ -12,6 +19,7 @@ function run_it() {
 		--exclude "README.md" \
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
+    install_fonts;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
@@ -24,3 +32,4 @@ else
 	fi;
 fi;
 unset run_it;
+unset install_fonts;
