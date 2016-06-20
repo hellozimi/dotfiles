@@ -1,0 +1,11 @@
+
+function parse_git_branch {
+	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "("${ref#refs/heads/}$(evil_git_dirty)") "
+}
+
+function evil_git_dirty {
+  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"
+}
+
+export PS1="\[$(tput setaf 244)\][\t] \[$(tput setaf 255)\]\W/\[$(tput sgr0)\] \[$(tput setaf 244)\]\$(parse_git_branch)\[$(tput sgr0)\]\n\[$(tput bold)\]\[$(tput setaf 227)\]λ \[$(tput sgr0)\]\[$(tput sgr0)\]"

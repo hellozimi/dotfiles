@@ -1,0 +1,25 @@
+[user]
+	email = simon@hiddencode.me
+	name = Simon Andersson
+[merge]
+	tool = opendiff
+[mergetool]
+	keepBackup = false
+[color]
+	ui = true
+[push]
+	default = matching
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[core]
+	editor = /usr/local/bin/vim
+[github]
+	user = hellozimi
+[ghi]
+	token = !security find-internet-password -a hellozimi -s github.com -l 'ghi token' -w
+[credentials]
+	helper = osxkeychain
+[credential]
+	helper = osxkeychain
