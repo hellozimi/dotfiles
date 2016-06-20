@@ -4,14 +4,14 @@ filetype off		" disable default filetype detection
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin('~/.vim/plugins')
-	Plugin 'kien/ctrlp.vim'
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'bling/vim-airline'
-	Plugin 'airblade/vim-gitgutter'
-	Plugin 'davidhalter/jedi-vim'
-	Plugin 'wavded/vim-stylus'
-	Plugin 'pangloss/vim-javascript'
-	Plugin 'hail2u/vim-css3-syntax'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'bling/vim-airline'
+    Plugin 'airblade/vim-gitgutter'
+    Plugin 'davidhalter/jedi-vim'
+    Plugin 'wavded/vim-stylus'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'hail2u/vim-css3-syntax'
     Plugin 'Townk/vim-autoclose'
     Plugin 'alvan/vim-closetag'
     Plugin 'apple/swift', {'rtp': 'utils/vim/'}
@@ -43,7 +43,7 @@ if !has("gui_running")
     let g:solarized_contrast = "high"
 endif
 if has('mouse')
-  set mouse=a
+    set mouse=a
 endif
 
 colorscheme solarized
@@ -69,12 +69,12 @@ set lazyredraw      " only redraw when needed
 set magic
 
 set softtabstop=4	" ┐
-set shiftwidth=4	" │ Default tab width
+set shiftwidth=4    " │ Default tab width
 set tabstop=4		" │
 set expandtab		" ┘
 
 set number          " line numbers
-set cursorline		" show cursor line
+set cursorline      " show cursor line
 
 set guioptions-=r   " ┐ Don't show
 set guioptions-=L   " ┘ scroll bars
@@ -115,14 +115,14 @@ set foldmethod=syntax   " fold based on indent
 autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,} " folding for sass
 
 function! NeatFoldText() "{{{2
-  let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
-  let lines_count = v:foldend - v:foldstart + 1
-  let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
-  let foldchar = matchstr(&fillchars, 'fold:\zs.')
-  let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
-  let foldtextend = lines_count_text . repeat(foldchar, 8)
-  let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
-  return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+    let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+    let lines_count = v:foldend - v:foldstart + 1
+    let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+    let foldchar = matchstr(&fillchars, 'fold:\zs.')
+    let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
+    let foldtextend = lines_count_text . repeat(foldchar, 8)
+    let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
+    return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 set foldtext=NeatFoldText()
 " }}}2
