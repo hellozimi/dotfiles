@@ -9,4 +9,5 @@ brew cask
 brew cask install iterm2
 brew cask install alfred
 brew cask install macvim
+brew cask install bettertouchtool
 
