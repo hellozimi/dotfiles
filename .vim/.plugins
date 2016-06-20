@@ -3,26 +3,38 @@ let g:ctrlp_map="<c-p>"
 let g:ctrlp_cmd="CtrlP"
 let g:ctrlp_custom_ignore = 'venv\|node_modules\|DS_Store\|*.pyc' " custom ignore
 
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+highlight SyntasticErrorSign ctermfg=red ctermbg=237
+highlight SyntasticWarningSign ctermfg=yellow ctermbg=237
+highlight SyntasticStyleErrorSign ctermfg=red ctermbg=237
+highlight SyntasticStyleWarningSign ctermfg=yellow ctermbg=237
+
+" Gitgutter
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
+let g:gitgutter_diff_args = '-w'
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = ':'
+
 hi clear SignColumn
 hi GitGutterAdd ctermfg=green guifg=darkgreen
 hi GitGutterChange ctermfg=yellow guifg=darkyellow
 hi GitGutterDelete ctermfg=red guifg=darkred
 hi GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
 
+" Airline
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#virtualenv#enabled=1
 let g:Powerline_symbols = 'fancy'
 let g:airline#extensions#tabline#fnamemod=':t'
-
-" Remove usages command in jedi-vim
-let g:jedi#usages_command=""
-
-" Other jedi settings for python
-let g:jedi#use_tabs_not_buffers=0
-let g:jedi#popup_on_dot=0
-let g:jedi#show_call_signatures="0"
-let g:pymode_rope=0
 
 " NERDTreeIgnore
 let NERDTreeIgnore=['.*\.pyc$', '^\.git$', '^\.$', '^\.\.$', '^\.sass-cache$', '^__pycache__$']

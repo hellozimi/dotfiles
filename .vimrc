@@ -8,12 +8,7 @@ call vundle#begin('~/.vim/plugins')
     Plugin 'scrooloose/nerdtree'
     Plugin 'bling/vim-airline'
     Plugin 'airblade/vim-gitgutter'
-    Plugin 'davidhalter/jedi-vim'
-    Plugin 'wavded/vim-stylus'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'hail2u/vim-css3-syntax'
-    Plugin 'Townk/vim-autoclose'
-    Plugin 'alvan/vim-closetag'
+    Plugin 'scrooloose/syntastic'
     Plugin 'apple/swift', {'rtp': 'utils/vim/'}
     Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
@@ -30,7 +25,6 @@ set secure
 
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
 set termencoding=utf-8
 
 set background=dark
@@ -38,6 +32,7 @@ set background=dark
 set guitablabel=%M\ %t
 set t_Co=256		" Full-color support
 if !has("gui_running")
+    set term=xterm-256color
     let g:solarized_termcolors=16
     let g:solarized_visibility = "high"
     let g:solarized_contrast = "high"
@@ -58,31 +53,36 @@ set smartindent     " smart indent
 
 set hidden          " no overwrite on new files
 set clipboard=unnamed " use system clipboard
+set paste           " paste without auto indentation
 
 set hlsearch        " highlight search
 set incsearch       " incremental search
+
 set ignorecase      " ignore casing
+set infercase       " infer casing
 set smartcase       " be smart with cases
+
+set gdefault        " /g default on substitutions
 
 set lazyredraw      " only redraw when needed
 
 set magic
 
 set softtabstop=4	" ┐
-set shiftwidth=4    " │ Default tab width
-set tabstop=4		" │
+set shiftwidth=4    " │ default tab width and
+set tabstop=4		" │ set tabs with spaces
 set expandtab		" ┘
 
 set number          " line numbers
 set cursorline      " show cursor line
 
-set guioptions-=r   " ┐ Don't show
+set guioptions-=r   " ┐ don't show
 set guioptions-=L   " ┘ scroll bars
 
 set laststatus=2    " show statusline
 
 set noerrorbells    " ┐
-set novisualbell    " │ Disable error
+set novisualbell    " │ disable error
 set t_vb=           " │ sounds
 set tm=500          " ┘
 
@@ -90,8 +90,18 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 set nobackup        " ┐
-set nowritebackup   " │ No backup
+set nowritebackup   " │ no backup
 set noswapfile      " ┘
+
+set foldenable          " enable folding
+set foldlevelstart=10   " start at max
+set foldnestmax=10      " fold max 10
+set foldmethod=syntax   " fold based on indent
+
+set undofile            " ┐
+set undodir=~/.vim/undo " ┘ store undo state between sessions
+
+set shortmess+=I        " disable startup message
 
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
@@ -107,12 +117,20 @@ endif
 " plugins
 "---------------------
 
-set foldenable          " enable folding
-set foldlevelstart=10   " start at max
-set foldnestmax=10      " fold max 10
-set foldmethod=syntax   " fold based on indent
-
 autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,} " folding for sass
+
+" remove trailing whitespaces and ^M chars
+autocmd FileType c,h,m,swift,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+
+
+augroup AutoSyntastic
+    autocmd!
+    autocmd BufWritePost *.c,*.cpp,*.m,*.h call s:syntastic()
+augroup end
+
+function! s:syntastic()
+    SyntasticCheck
+endfunction
 
 function! NeatFoldText() "{{{2
     let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
@@ -203,6 +221,7 @@ nmap <Leader>t :enew<CR>
 nmap <Leader>n :bprevious<CR>
 nmap <Leader>m :bnext<CR>
 nmap <Leader>bd :bp <BAR> bd #<CR>
+
 " remove search highlight
 map <Leader>h :nohl<CR>
 
