@@ -11,4 +11,4 @@ brew cask install alfred
 brew cask install macvim
 brew cask install bettertouchtool
 brew cask install razer-synapse
-
+brew cask install disk-inventory-x
