@@ -63,6 +63,14 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
+# Remove window animations
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+
+# Quick typing
+defaults write NSGlobalDomain InitialKeyRepeat -int 20
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
 ### FINDER
 
 # Show icons for hard drives, servers, and removable media on the desktop
