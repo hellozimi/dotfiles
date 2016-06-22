@@ -79,6 +79,12 @@ defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
+# Removes animation for Info panes
+defaults write com.apple.finder DisableAllAnimations -bool true
+
+# Quick look window animation
+defaults write NSGlobalDomain QLPanelAnimationDuration -float 0
+
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
