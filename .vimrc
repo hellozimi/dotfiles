@@ -17,7 +17,7 @@ filetype plugin indent on
 syntax on
 
 if has('autocmd')
-	filetype plugin indent on
+    filetype plugin indent on
 endif
 
 set exrc
@@ -42,7 +42,7 @@ if has('mouse')
 endif
 
 colorscheme solarized
-set guifont=SauceCodePowerline-Medium:h13 " font
+set guifont=MesloLGMDZ-RegularForPowerline:h13 " font
 
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
@@ -100,6 +100,8 @@ set foldmethod=syntax   " fold based on indent
 
 set undofile            " ┐
 set undodir=~/.vim/undo " ┘ store undo state between sessions
+
+set backspace=indent,eol,start " set backspace options
 
 set shortmess+=I        " disable startup message
 
