@@ -67,6 +67,7 @@ set gdefault        " /g default on substitutions
 set lazyredraw      " only redraw when needed
 
 set magic
+set wildmenu
 
 set softtabstop=4	" ┐
 set shiftwidth=4    " │ default tab width and
