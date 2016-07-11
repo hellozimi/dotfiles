@@ -3,16 +3,6 @@ let g:ctrlp_map="<c-p>"
 let g:ctrlp_cmd="CtrlP"
 let g:ctrlp_custom_ignore = 'venv\|node_modules\|DS_Store\|*.pyc' " custom ignore
 
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-highlight SyntasticErrorSign ctermfg=red ctermbg=237
-highlight SyntasticWarningSign ctermfg=yellow ctermbg=237
-highlight SyntasticStyleErrorSign ctermfg=red ctermbg=237
-highlight SyntasticStyleWarningSign ctermfg=yellow ctermbg=237
-
 " Gitgutter
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
@@ -35,6 +25,19 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#virtualenv#enabled=1
 let g:Powerline_symbols = 'fancy'
 let g:airline#extensions#tabline#fnamemod=':t'
+let g:airline#extensions#tabline#left_alt_sep='|'
 
 " NERDTreeIgnore
 let NERDTreeIgnore=['.*\.pyc$', '^\.git$', '^\.$', '^\.\.$', '^\.sass-cache$', '^__pycache__$']
+
+let python_highlight_all=1
+
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
