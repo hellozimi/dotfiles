@@ -8,8 +8,10 @@ call vundle#begin('~/.vim/plugins')
     Plugin 'scrooloose/nerdtree'
     Plugin 'bling/vim-airline'
     Plugin 'airblade/vim-gitgutter'
-    Plugin 'scrooloose/syntastic'
     Plugin 'apple/swift', {'rtp': 'utils/vim/'}
+    Plugin 'altercation/vim-colors-solarized'
+    Plugin 'chriskempson/base16-vim'
+	Plugin 'Xuyuanp/nerdtree-git-plugin'
     Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
@@ -20,7 +22,7 @@ if has('autocmd')
     filetype plugin indent on
 endif
 
-set exrc
+set exrc " use local .vimrcs
 set secure
 
 set encoding=utf-8
@@ -33,16 +35,13 @@ set guitablabel=%M\ %t
 set t_Co=256		" Full-color support
 if !has("gui_running")
     set term=xterm-256color
-    let g:solarized_termcolors=16
-    let g:solarized_visibility = "high"
-    let g:solarized_contrast = "high"
 endif
 if has('mouse')
     set mouse=a
 endif
 
-colorscheme solarized
-set guifont=MesloLGMDZ-RegularForPowerline:h13 " font
+colorscheme base16-ocean
+set guifont=MesloLGMDZ-RegularForPowerline:h15 " font
 
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
@@ -112,8 +111,8 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 " plugins
 "---------------------
 
-if filereadable(glob('~/.vim/.plugins'))
-    source ~/.vim/.plugins
+if filereadable(glob('~/.vim/.plugins.vim'))
+    source ~/.vim/.plugins.vim
 endif
 
 "---------------------
@@ -124,16 +123,6 @@ autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldma
 
 " remove trailing whitespaces and ^M chars
 autocmd FileType c,h,m,swift,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-
-
-augroup AutoSyntastic
-    autocmd!
-    autocmd BufWritePost *.c,*.cpp,*.m,*.h call s:syntastic()
-augroup end
-
-function! s:syntastic()
-    SyntasticCheck
-endfunction
 
 function! NeatFoldText() "{{{2
     let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
@@ -202,6 +191,8 @@ autocmd BufWritePre     * :call TrimWhiteSpace()
 " key mappings
 "----------------------------------------
 
+call togglebg#map("<F5>")
+
 let mapleader=","
 
 " indent all lines
@@ -230,6 +221,9 @@ map <Leader>h :nohl<CR>
 
 " fold code
 nnoremap <space> za
+
+" paste on next line
+nmap <Leader>p o<esc>p
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
