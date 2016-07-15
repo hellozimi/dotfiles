@@ -11,11 +11,12 @@ call vundle#begin('~/.vim/plugins')
     Plugin 'apple/swift', {'rtp': 'utils/vim/'}
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'chriskempson/base16-vim'
-	Plugin 'Xuyuanp/nerdtree-git-plugin'
+    Plugin 'Xuyuanp/nerdtree-git-plugin'
     Plugin 'Valloric/YouCompleteMe'
+    Plugin 'klen/python-mode'
 call vundle#end()
-filetype plugin indent on
 
+filetype plugin indent on
 syntax on
 
 if has('autocmd')
