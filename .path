@@ -2,3 +2,4 @@ export PATH=$PATH:/usr/local/git/bin/
 export PATH=$PATH:/usr/local/mysql/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:~/.rvm/bin
+export PATH=$PATH:~/.go/bin
