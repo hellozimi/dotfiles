@@ -53,7 +53,6 @@ set smartindent     " smart indent
 
 set hidden          " no overwrite on new files
 set clipboard=unnamed " use system clipboard
-set paste           " paste without auto indentation
 
 set hlsearch        " highlight search
 set incsearch       " incremental search
@@ -117,10 +116,6 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 if filereadable(glob('~/.vim/.plugins.vim'))
     source ~/.vim/.plugins.vim
 endif
-
-"---------------------
-" plugins
-"---------------------
 
 autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,} " folding for sass
 
