@@ -48,8 +48,6 @@ set guifont=MesloLGMDZ-RegularForPowerline:h15 " font
 
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
-set completeopt-=preview " don't show autocomplete window
-
 set autoindent      " auto indent
 set smartindent     " smart indent
 
@@ -100,6 +98,8 @@ set foldenable          " enable folding
 set foldlevelstart=10   " start at max
 set foldnestmax=10      " fold max 10
 set foldmethod=syntax   " fold based on indent
+
+set splitbelow " open new windows below
 
 set undofile            " ┐
 set undodir=~/.vim/undo " ┘ store undo state between sessions
@@ -218,6 +218,9 @@ nmap <Leader>t :enew<CR>
 nmap <Leader>n :bprevious<CR>
 nmap <Leader>m :bnext<CR>
 nmap <Leader>bd :bp <BAR> bd #<CR>
+
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " remove search highlight
 map <Leader>h :nohl<CR>
