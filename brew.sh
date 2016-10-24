@@ -44,9 +44,9 @@ brew install python3
 brew install mongodb
 brew install redis
 brew install memcached
-brew install libmemcached
-brew install go
 brew install pgcli
+brew install go
+brew install gotags
 
 # Remove outdated versions from the cellar.
 brew cleanup
