@@ -12,8 +12,10 @@ call vundle#begin('~/.vim/plugins')
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'chriskempson/base16-vim'
     Plugin 'Xuyuanp/nerdtree-git-plugin'
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'klen/python-mode'
+    Plugin 'JamshedVesuna/vim-markdown-preview'
+    Plugin 'Shougo/neocomplete.vim'
+    Plugin 'fatih/vim-go'
+    Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
 
 filetype plugin indent on

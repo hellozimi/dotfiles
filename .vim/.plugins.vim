@@ -1,7 +1,12 @@
 " Set up CtrlP mappings
 let g:ctrlp_map="<c-p>"
 let g:ctrlp_cmd="CtrlP"
-let g:ctrlp_custom_ignore = 'venv\|node_modules\|DS_Store\|*.pyc' " custom ignore
+" let g:ctrlp_custom_ignore = '(venv|node_modules|\.DS_Store|\*.pyc|\*\.a|bin|vendor|pkg)' " custom ignore
+
+let g:ctrlp_custom_ignore = {
+	\ 'dir': '\v[\/](\.(git|svn|hg)|node_modules|pkg|bin|tmp|vendor)$',
+	\ 'file': '\.(DS_Store|pyc|a)$',
+\ }
 
 " Gitgutter
 let g:gitgutter_realtime = 1
@@ -31,6 +36,30 @@ let g:airline#extensions#tabline#left_alt_sep='|'
 let NERDTreeIgnore=['.*\.pyc$', '^\.git$', '^\.$', '^\.\.$', '^\.sass-cache$', '^__pycache__$']
 
 let python_highlight_all=1
+
+" Markdown preview
+let vim_markdown_preview_github=1
+let vim_markdown_preview_toggle=3
+let vim_markdown_preview_hotkey='<C-m>'
+
+
+if has('lua')
+	" Neocomplete
+	let g:neocomplete#enable_at_startup=1
+	let g:neocomplete#enable_smart_case=1
+	let g:neocomplete#sources#syntax#min_keyword_length=2
+	let g:neocomplete#sources#tags#cache_limit_size = 16777216
+
+	inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+	function! s:my_cr_function()
+		return neocomplete#close_popup() . "\<CR>"
+		" For no inserting <CR> key.
+		return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+	endfunction
+
+	" <TAB>: completion.
+	inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+endif
 
 py << EOF
 import os
