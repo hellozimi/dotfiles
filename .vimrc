@@ -16,6 +16,8 @@ call vundle#begin('~/.vim/plugins')
     Plugin 'Shougo/neocomplete.vim'
     Plugin 'fatih/vim-go'
     Plugin 'jiangmiao/auto-pairs'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'Konfekt/FastFold'
 call vundle#end()
 
 filetype plugin indent on
