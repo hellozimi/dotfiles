@@ -1,7 +1,7 @@
 " Set up CtrlP mappings
 let g:ctrlp_map="<c-p>"
 let g:ctrlp_cmd="CtrlP"
-" let g:ctrlp_custom_ignore = '(venv|node_modules|\.DS_Store|\*.pyc|\*\.a|bin|vendor|pkg)' " custom ignore
+let g:ctrlp_show_hidden = 1
 
 let g:ctrlp_custom_ignore = {
 	\ 'dir': '\v[\/](\.(git|svn|hg)|node_modules|pkg|bin|tmp|vendor)$',
