@@ -50,15 +50,18 @@ if has('lua')
 	let g:neocomplete#sources#syntax#min_keyword_length=2
 	let g:neocomplete#sources#tags#cache_limit_size = 16777216
 
-	inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-	function! s:my_cr_function()
-		return neocomplete#close_popup() . "\<CR>"
-		" For no inserting <CR> key.
-		return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-	endfunction
-
-	" <TAB>: completion.
-	inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+        " For no inserting <CR> key.
+        return pumvisible() ? "\<C-y>" : "\<CR>"
+    endfunction
+    " <TAB>: completion.
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 endif
 
 py << EOF
