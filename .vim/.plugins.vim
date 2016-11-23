@@ -42,6 +42,8 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_toggle=3
 let vim_markdown_preview_hotkey='<C-m>'
 
+" vim-jsx
+let g:jsx_ext_required = 0
 
 if has('lua')
 	" Neocomplete

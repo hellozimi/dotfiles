@@ -18,7 +18,10 @@ call vundle#begin('~/.vim/plugins')
     Plugin 'jiangmiao/auto-pairs'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'Konfekt/FastFold'
+    Plugin 'mxw/vim-jsx'
+    Plugin 'pangloss/vim-javascript'
 call vundle#end()
+
 
 filetype plugin indent on
 syntax on
@@ -98,7 +101,6 @@ set noswapfile      " ┘
 set foldenable          " enable folding
 set foldlevelstart=10   " start at max
 set foldnestmax=10      " fold max 10
-set foldmethod=syntax   " fold based on indent
 
 set splitbelow " open new windows below
 
