@@ -32,5 +32,5 @@ fi
 complete -W "NSGlobalDomain" defaults;
 
 # NVM
-. "$(brew --prefix nvm)/nvm.sh"
+. "/usr/local/opt/nvm/nvm.sh"
 

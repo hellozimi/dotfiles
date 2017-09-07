@@ -40,7 +40,9 @@ set termencoding=utf-8
 set background=dark
 
 set guitablabel=%M\ %t
+
 set t_Co=256		" Full-color support
+
 if !has("gui_running")
     set term=xterm-256color
 endif
@@ -49,7 +51,7 @@ if has('mouse')
 endif
 
 colorscheme base16-ocean
-set guifont=MesloLGMDZ-RegularForPowerline:h15 " font
+set guifont=MesloLGMDZ-RegularForPowerline:h13 " font
 
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
@@ -79,7 +81,7 @@ set tabstop=4		" │ set tabs with spaces
 set expandtab		" ┘
 
 set number          " line numbers
-set cursorline      " show cursor line
+" set cursorline      " show cursor line
 
 set guioptions-=r   " ┐ don't show
 set guioptions-=L   " ┘ scroll bars
