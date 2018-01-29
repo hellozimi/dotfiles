@@ -9,8 +9,6 @@ brew upgrade --all
 brew install coreutils
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
 # running `chsh`.
 brew install bash
