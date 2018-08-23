@@ -20,3 +20,5 @@ brew cask install rescuetime
 brew cask install docker
 brew cask install dropbox
 brew cask install 1password
+brew cask install hammerspoon
+brew cask install google-chrome
