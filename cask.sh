@@ -10,7 +10,12 @@ brew cask install iterm2
 brew cask install alfred
 brew cask install macvim
 brew cask install bettertouchtool
-brew cask install razer-synapse
 brew cask install disk-inventory-x
 brew cask install vlc
-brew cask install rowanj-gitx
+brew cask install fork
+brew cask install steermouse
+brew cask install divvy
+brew cask install figma
+brew cask install rescuetime
+brew cask install docker
+brew cask install dropbox
