@@ -30,13 +30,14 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'nanotech/jellybeans.vim'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'airblade/vim-gitgutter'
 
 " Productivity
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf.vim'
 
 " Programming
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -46,7 +47,9 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 call plug#end()
 
-" ### Colors
+" ========
+"  Colors
+" ========
 
 " dark background color
 set background=dark
@@ -174,8 +177,8 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " centers cursor when moving up and down
-noremap <C-d> <C-d>zz
-noremap <C-u> <C-u>z
+noremap <C-d> <C-d>zz<CR>
+noremap <C-u> <C-u>z<CR>
 
 " plays recorded macro with space
 :noremap <Space> @q
