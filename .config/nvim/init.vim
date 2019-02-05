@@ -32,6 +32,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'airblade/vim-gitgutter'
+Plug 'chriskempson/base16-vim'
 
 " Productivity
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -55,7 +56,7 @@ call plug#end()
 set background=dark
 
 " jellybeans colorscheme
-colorscheme jellybeans
+colorscheme base16-ocean
 
 " true color for neovim
 set termguicolors
@@ -89,6 +90,9 @@ set incsearch
 
 " highlight matching
 set showmatch
+
+" shows cursorline
+set cursorline
 
 " use system clipboard
 set clipboard=unnamed
@@ -129,6 +133,20 @@ set novisualbell    " │ disable error
 set t_vb=           " │ sounds
 set tm=500          " ┘
 
+" creates dir if not exists
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+
 " ======
 "  Text
 " ======
@@ -167,6 +185,9 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" maps ctrl-p to :files
+map <C-p> :GFiles<CR>
 
 " smarter when moving through wrapped lines
 noremap j gj
