@@ -46,6 +46,7 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 " ========
