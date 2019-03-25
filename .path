@@ -1,5 +1,8 @@
 export PATH=$PATH:/usr/local/git/bin/
 export PATH=$PATH:/usr/local/mysql/bin
 export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:~/Library/Python/3.7/bin
 export PATH=$PATH:~/.rvm/bin
 export PATH=$PATH:$GOBIN
+export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"

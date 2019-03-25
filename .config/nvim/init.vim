@@ -29,6 +29,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'deoplete-plugins/deoplete-go', { 'do' : 'make' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'airblade/vim-gitgutter'
@@ -41,12 +42,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf.vim'
 
 " Programming
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
 call plug#end()
 
 " ========
@@ -224,8 +226,15 @@ map <Leader>tt <esc>:NERDTreeToggle<CR>
 "  Plugins
 " =========
 
+set completeopt+=noselect
+
 " deoplete: enables as start up
 let g:deoplete#enable_at_startup=1
+
+" deoplete-go settings
+let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#source_importer = 1
 
 " vim-go: uses goimports as formatting tool
 let g:go_fmt_command = "goimports"
