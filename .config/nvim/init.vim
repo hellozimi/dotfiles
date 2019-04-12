@@ -40,6 +40,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'jparise/vim-graphql'
+Plug 'shime/vim-livedown'
 
 " Programming
 Plug 'mxw/vim-jsx'
@@ -124,6 +127,9 @@ set noshowmode
 
 " shows line numbers
 set number
+
+" Always show signcolumn
+set signcolumn=yes
 
 " return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -310,4 +316,7 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeChDirMode=2
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" GitGutter: settings
+autocmd BufWritePost * GitGutter
 
