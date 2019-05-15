@@ -9,6 +9,9 @@ fi
 alias python="python3"
 alias pip="pip3"
 
+# Alias for nvim
+alias vim="nvim"
+
 # List all files colorized in long format
 alias l="ls -lF ${colorflag}"
 

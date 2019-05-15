@@ -52,6 +52,7 @@ Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " ========
@@ -320,3 +321,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " GitGutter: settings
 autocmd BufWritePost * GitGutter
 
+
+" Fzf: settings
+
+command! -nargs=? -bang -complete=dir Files
+      \ call fzf#vim#files(<q-args>, <bang>0 ? fzf#vim#with_preview('up:60%') : {}, <bang>0)

@@ -31,6 +31,6 @@ fi
 # You could just use `-g` instead, but I like being explicit
 complete -W "NSGlobalDomain" defaults;
 
-# NVM
-. "/usr/local/opt/nvm/nvm.sh"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

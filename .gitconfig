@@ -14,7 +14,7 @@
 	smudge = git-lfs smudge %f
 	required = true
 [core]
-	editor = /usr/local/bin/vim
+	editor = nvim
 [github]
 	user = hellozimi
 [ghi]
@@ -23,3 +23,9 @@
 	helper = osxkeychain
 [credential]
 	helper = osxkeychain
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[alias]
+    unstage = reset HEAD --
+    logg = log --oneline --graph
+    pushf = push --force-with-lease
