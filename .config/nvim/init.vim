@@ -29,7 +29,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'deoplete-plugins/deoplete-go', { 'do' : 'make' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'airblade/vim-gitgutter'
@@ -167,9 +166,9 @@ set expandtab
 " be smart when using tabs
 set smarttab
 
-" indent by 4 by default
-set shiftwidth=4
-set tabstop=4
+" indent by 2 by default
+set shiftwidth=2
+set tabstop=2
 
 " automatically indents
 set autoindent
@@ -232,20 +231,15 @@ map <Leader>tt <esc>:NERDTreeToggle<CR>
 " =========
 "  Plugins
 " =========
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_gopls_complete_unimported = 1
 
-set completeopt+=noselect
-
-" deoplete: enables as start up
-let g:deoplete#enable_at_startup=1
-
-" deoplete-go settings
-let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#source_importer = 1
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 
 " vim-go: uses goimports as formatting tool
 let g:go_fmt_command = "goimports"
-
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 

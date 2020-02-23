@@ -77,3 +77,7 @@ alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgree
 
 alias ll='ls -FGlAhp'
 alias edit='subl'
+alias buuidgen="uuidgen | sed -z '$ s/\n$//' | tr '[:upper:]' '[:lower:]'"
+
+alias tfdev="AWS_PROFILE=popdog-general-dev chamber exec terraform -- tfenv terraform"
+alias tfprod="AWS_PROFILE=popdog-general-prod chamber exec terraform -- tfenv terraform"
