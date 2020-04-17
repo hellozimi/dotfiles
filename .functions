@@ -49,19 +49,18 @@ extract () {
      fi
 }
 
-_virtualenv_auto_activate() {
-    if [ -e ".venv" ]; then
-        # Check to see if already activated to avoid redundant activating
-        if [ "$VIRTUAL_ENV" != "$(pwd -P)/.venv" ]; then
-            _VENV_NAME=$(basename `pwd`)
-            echo Activating virtualenv \"$_VENV_NAME\"...
-            VIRTUAL_ENV_DISABLE_PROMPT=1
-            source .venv/bin/activate
-            _OLD_VIRTUAL_PS1="$PS1"
-            PS1="($_VENV_NAME)$PS1"
-            export PS1
-        fi
+tmux_send_command() {
+    if [[ $# -eq 0 || "$1" = "--help" ]] ; then
+        echo 'Usage: _send_bash_command_to_session $session_name what ever command you want: '
+        return
     fi
+    input_session="$1"
+    input_command="${@:2}"
+    for _pane in $(tmux list-panes -s -t ${input_session} -F '#{window_index}.#{pane_index}'); do
+        # only apply the command in bash or zsh panes.
+        _current_command=$(tmux display-message -p -t ${input_session}:${_pane} '#{pane_current_command}')
+        if [ ${_current_command} = zsh ] || [ ${_current_command} = bash ] ; then
+            tmux send-keys -t ${_pane} "${input_command}" Enter
+        fi
+    done
 }
-
-export PROMPT_COMMAND=_virtualenv_auto_activate
