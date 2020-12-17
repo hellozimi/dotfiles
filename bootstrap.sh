@@ -2,21 +2,6 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin master;
-
-function install_fonts() {
-    POWERLINE_GIT="https://github.com/powerline/fonts"
-    git clone $POWERLINE_GIT powerline-fonts
-    sh ./powerline-fonts/install.sh
-    rm -rf powerline-fonts
-    
-    INTER_UI_URL="https://github.com/rsms/inter/releases/download/v2.5/Inter-UI-2.5.zip"
-    curl -L $INTER_UI_URL > inter-ui.zip
-    unzip inter-ui.zip -d inter-ui
-    mv inter-ui/Inter\ UI\ \(OTF\) ~/Library/Fonts
-    rm -rf inter-ui inter-ui.zip
-}
-
 function run_it() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
