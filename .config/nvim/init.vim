@@ -29,6 +29,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'deoplete-plugins/deoplete-go', { 'do' : 'make' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'airblade/vim-gitgutter'
@@ -42,6 +43,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jparise/vim-graphql'
 Plug 'shime/vim-livedown'
+Plug 'vim-scripts/paredit.vim', { 'for': ['clojure', 'scheme'] }
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'hashivim/vim-terraform'
 
 " Programming
 Plug 'mxw/vim-jsx'
@@ -51,7 +55,8 @@ Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'hashivim/vim-terraform'
+Plug 'tpope/vim-fireplace'
+Plug 'venantius/vim-cljfmt'
 call plug#end()
 
 " ========
@@ -166,9 +171,9 @@ set expandtab
 " be smart when using tabs
 set smarttab
 
-" indent by 2 by default
-set shiftwidth=2
-set tabstop=2
+" indent by 4 by default
+set shiftwidth=4
+set tabstop=4
 
 " automatically indents
 set autoindent
@@ -231,15 +236,20 @@ map <Leader>tt <esc>:NERDTreeToggle<CR>
 " =========
 "  Plugins
 " =========
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_gopls_complete_unimported = 1
 
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+set completeopt+=noselect
+
+" deoplete: enables as start up
+let g:deoplete#enable_at_startup=1
+
+" deoplete-go settings
+let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#source_importer = 1
 
 " vim-go: uses goimports as formatting tool
 let g:go_fmt_command = "goimports"
+
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 
@@ -310,13 +320,11 @@ let NERDTreeQuitOnOpen = 0
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeChDirMode=2
 
+" VimTerraform: settings
+let g:terraform_align = 1
+let g:terraform_fmt_on_save = 1
+
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " GitGutter: settings
 autocmd BufWritePost * GitGutter
-
-
-" Fzf: settings
-
-command! -nargs=? -bang -complete=dir Files
-      \ call fzf#vim#files(<q-args>, <bang>0 ? fzf#vim#with_preview('up:60%') : {}, <bang>0)

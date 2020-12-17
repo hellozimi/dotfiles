@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/simonandersson/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -115,9 +115,9 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 for file in ~/.{aliases,extras,exports,functions,path}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
+unset file
 
 PROMPT="%B%~ %F{3}λ%f%b "
 RPROMPT='%F{8}%*%f'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
