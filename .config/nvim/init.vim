@@ -29,7 +29,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'deoplete-plugins/deoplete-go', { 'do' : 'make' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'airblade/vim-gitgutter'
@@ -54,7 +53,6 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'tpope/vim-fireplace'
 Plug 'venantius/vim-cljfmt'
 call plug#end()
@@ -106,7 +104,13 @@ set showmatch
 set cursorline
 
 " use system clipboard
-set clipboard=unnamed
+if has("gui_running")
+    if g:os == "Darwin"
+        set clipboard=unnamed
+    elseif g:os == "Linux"
+        set clipboard+=unnamedplus
+    endif
+endif
 
 " /g default on substitutions
 set gdefault
@@ -131,12 +135,18 @@ set t_ut=
 set noshowmode
 
 " shows line numbers
-set number
+set number relativenumber
+
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * if !(bufname("%") =~ "NERD_Tree_") | set relativenumber | endif
+    autocmd BufLeave,FocusLost,InsertEnter * if !(bufname("%") =~ "NERD_Tree_") | set norelativenumber | endif
+augroup END
 
 " Always show signcolumn
 set signcolumn=yes
 
-" return to last edit position when opening files (You want this!)
+" return to last edit position when opening files
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
@@ -215,9 +225,6 @@ nnoremap N Nzzzv
 noremap <C-d> <C-d>zz<CR>
 noremap <C-u> <C-u>z<CR>
 
-" plays recorded macro with space
-:noremap <Space> @q
-
 " move lines with alt+j/k
 nnoremap ∆ :m .+1<CR>==
 nnoremap ˚ :m .-2<CR>==
@@ -225,6 +232,13 @@ inoremap ∆ <Esc>:m .+1<CR>==gi
 inoremap ˚ <Esc>:m .-2<CR>==gi
 vnoremap ∆ :m '>+1<CR>gv=gv
 vnoremap ˚ :m '<-2<CR>gv=gv
+
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+inoremap <M-j> <Esc>:m .+1<CR>==gi
+inoremap <M-k> <Esc>:m .-2<CR>==gi
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
 
 " clears search
 map <Leader>h :nohl<CR>
@@ -238,14 +252,29 @@ map <Leader>tt <esc>:NERDTreeToggle<CR>
 " =========
 
 set completeopt+=noselect
+set completeopt-=preview
 
 " deoplete: enables as start up
 let g:deoplete#enable_at_startup=1
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 
-" deoplete-go settings
-let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#source_importer = 1
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
+let g:go_doc_popup_window = 1
+
+let g:go_auto_type_info = 1
+
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_chan_whitespace_error = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_trailing_whitespace_error = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
 
 " vim-go: uses goimports as formatting tool
 let g:go_fmt_command = "goimports"

@@ -11,6 +11,8 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 BASE16_THEME="ocean"
 
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOCONNECT=false
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -76,6 +78,7 @@ plugins=(
     docker-compose
     iterm2
     golang
+    tmux
 )
 
 source $ZSH/oh-my-zsh.sh

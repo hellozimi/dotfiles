@@ -1,3 +1,5 @@
 export PATH=$PATH:/usr/local/git/bin/
 export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$GOBIN
