@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+DATE="$(date +%Y-%m-%d) $(date +%H:%M:%S)"
+ffmpeg -f x11grab -r 30 -i :1 -q:v 0 -vcodec mpeg4 "$DATE.mp4"

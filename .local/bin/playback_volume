@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+err() {
+    echo "$@" 1>&2
+    exit 1
+}
+
+usage() {
+    echo "usage: playback_volume [option]"
+    echo
+    echo "Options:"
+    echo "  -i, --increase  - increase value by <argument>"
+    echo "  -d, --decrease  - decrease value by <argument>"
+    echo "  -t, --toggle    - toggle mute/unmute"
+    echo "  -h, --help      - diplay this"
+    exit
+}
+
+case $1 in
+    '-i'|'--increase')
+        [ -z "$2" ] && err "No argument passed for increase"
+        ARG="${2}%+"
+        ;;
+    '-d'|'--decrease')
+        [ -z "$2" ] && err "No argument passed for increase"
+        ARG="${2}%-"
+        ;;
+    '-t'|'--toggle')
+        ARG="toggle"
+        ;;
+    ''|'-h'|'--help')
+        usage
+        ;;
+    *)
+        err "Unknown option '$1', see --help"
+esac
+
+amixer -q -D pulse sset Master $ARG

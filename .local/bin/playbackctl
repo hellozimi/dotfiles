@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+err() {
+    echo "$@" 1>&2
+    exit 1
+}
+
+usage() {
+    echo "usage: playbackctl [option]"
+    echo
+    echo "Options:"
+    echo "  -n, --next      - plays next track"
+    echo "  -p, --prev      - plays previous track"
+    echo "  -t, --toggle    - toggle play/pause"
+    echo "  -h, --help      - diplay this"
+    exit
+}
+
+
+if [ ! -x "$(command -v playerctl)" ] ; then
+	err "Can not find playerctl, to install use: sudo apt install playerctl"
+fi
+
+case $1 in
+    '-n'|'--next')
+        ARG="next"
+        ;;
+    '-p'|'--prev')
+        ARG="previous"
+        ;;
+    '-t'|'--toggle')
+        ARG="play-pause"
+        ;;
+    ''|'-h'|'--help')
+        usage
+        ;;
+    *)
+        err "Unknown option '$1', see --help"
+esac
+
+playerctl $ARG

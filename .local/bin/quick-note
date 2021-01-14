@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+TODAY=$(date +%Y-%m-%d)
+FILE="$HOME/.config/quick-note/$TODAY.md"
+
+mkdir -p $(dirname ${FILE})
+
+if [ ! -f $FILE ]; then
+    echo "# ${TODAY}" > $FILE
+fi
+
+nvim -c "norm Go" \
+    -c "norm Go## $(date +%H:%M)" \
+    -c "norm G2o" \
+    -c "norm zz" \
+    -c "startinsert" $FILE

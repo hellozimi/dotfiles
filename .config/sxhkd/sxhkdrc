@@ -150,3 +150,25 @@ super + shift + ctrl + l
 
 super + alt + n
     alacritty -t "quick-note" --class "quick-note-window","quick-note-window" -e "quick-note"
+
+#
+# Media keys
+#
+
+XF86AudioPlay
+	$HOME/.local/bin/playbackctl -t 
+	
+XF86AudioNext
+	$HOME/.local/bin/playbackctl -n 
+
+XF86AudioPrev
+	$HOME/.local/bin/playbackctl -p
+
+XF86AudioRaiseVolume
+	$HOME/.local/bin/playback_volume -i 5
+
+XF86AudioLowerVolume
+	$HOME/.local/bin/playback_volume -d 5
+
+XF86AudioMute
+	$HOME/.local/bin/playback_volume -t

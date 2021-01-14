@@ -20,6 +20,9 @@ set nobackup        " ┐
 set nowritebackup   " │ no backup
 set noswapfile      " ┘
 
+" mouse
+set mouse=nv
+
 " =========
 "  Install
 " =========
