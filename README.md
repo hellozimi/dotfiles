@@ -1,20 +1,22 @@
-# Dotfiles
-_template: https://github.com/mathiasbynens/dotfiles_
-
 ## Install
 
-First off, install [homebrew](http://brew.sh).
+A mix of macos and linux dotfiles.
 
 ```sh
 $ git clone git@github.com:hellozimi/dotfiles
 $ cd dotfiles
-$ sh bootstrap.sh
-$ cd ..
-$ sh brew.sh
-$ sh cask.sh
+$ sh symlink.sh
 ```
 
-## macOS
+### Linux (ubunutu 20.10)
+
+* bspwm & sxhkd
+* Alacritty
+* Polybar
+* betterlockscreen (i3lock-color)
+* neovim
+
+### macOS
 
 For specific macOS settings run
 

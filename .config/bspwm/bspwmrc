@@ -6,7 +6,9 @@ xrandr --output DP-0 --mode 2560x1440 --rate 144
 pacmd set-default-sink "alsa_output.usb-FiiO_DigiHug_USB_Audio-01.iec958-stereo"
 pacmd set-default-source "alsa_input.usb-Blue_Microphones_Yeti_Stereo_Microphone_797_2020_01_06_11901-00.analog-stereo"
 feh --bg-scale $HOME/Pictures/background.jpg &
+eval $(gnome-keyring-daemon -s -- components=pkcs11,secrets,ssh,gpg) & 
 bash $HOME/.config/polybar/launch.sh &
+unclutter &
 greenclip daemon &
 
 bspc monitor -d I II III IV V VI

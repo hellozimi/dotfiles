@@ -48,6 +48,8 @@ Plug 'shime/vim-livedown'
 Plug 'vim-scripts/paredit.vim', { 'for': ['clojure', 'scheme'] }
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'tpope/vim-dotenv'
+Plug 'vim-test/vim-test'
 
 " Programming
 Plug 'mxw/vim-jsx'
@@ -107,13 +109,7 @@ set showmatch
 set cursorline
 
 " use system clipboard
-if has("gui_running")
-    if g:os == "Darwin"
-        set clipboard=unnamed
-    elseif g:os == "Linux"
-        set clipboard+=unnamedplus
-    endif
-endif
+set clipboard+=unnamedplus
 
 " /g default on substitutions
 set gdefault
@@ -213,6 +209,9 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" q mapped to gq
+map q gq
+
 " maps ctrl-p to :files
 map <C-p> :GFiles<CR>
 
@@ -238,8 +237,8 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 
 nnoremap <M-j> :m .+1<CR>==
 nnoremap <M-k> :m .-2<CR>==
-inoremap <M-j> <Esc>:m .+1<CR>==gi
 inoremap <M-k> <Esc>:m .-2<CR>==gi
+inoremap <M-j> <Esc>:m .+1<CR>==gi
 vnoremap <M-j> :m '>+1<CR>gv=gv
 vnoremap <M-k> :m '<-2<CR>gv=gv
 
@@ -248,7 +247,6 @@ map <Leader>h :nohl<CR>
 
 " NerdTree: key mapping
 map <Leader>tt <esc>:NERDTreeToggle<CR>
-
 
 " =========
 "  Plugins
