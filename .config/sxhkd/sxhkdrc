@@ -76,8 +76,8 @@ super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-super + ctrl + {m,x,z}
-	bspc node -g {marked,locked,private}
+super + ctrl + {m,x,z,u}
+	bspc node -g {marked,locked,private,sticky}
 
 #
 # focus/swap
@@ -100,8 +100,8 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
+#super + {grave,Tab}
+#	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -154,7 +154,7 @@ super + {Left,Down,Up,Right}
 #
 
 super + shift + ctrl + l
-    betterlockscreen -l blur
+    $HOME/.local/bin/lock
 
 super + alt + n
     alacritty -t "quick-note" --class "quick-note-window","quick-note-window" -e "quick-note"

@@ -5,7 +5,8 @@ window:
 
 font:
   normal:
-    family: "Hack"
+    family: "JetBrainsMonoNL"
+    style: "Medium"
   size: 10
 
 mouse:

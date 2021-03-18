@@ -1,20 +1,22 @@
 #! /bin/sh
 
+source ~/.profile
 pgrep -x sxhkd > /dev/null || sxhkd -r ~/sxhkd.log &
 compton &
-xrandr --output DP-0 --mode 2560x1440 --rate 144
+xrandr --output DP-0 --mode 2560x1440 --rate 144 --output HDMI-0 --mode 1920x1080 --rate 144 --rotate right --right-of DP-0
 pacmd set-default-sink "alsa_output.usb-FiiO_DigiHug_USB_Audio-01.iec958-stereo"
 pacmd set-default-source "alsa_input.usb-Blue_Microphones_Yeti_Stereo_Microphone_797_2020_01_06_11901-00.analog-stereo"
-feh --bg-scale $HOME/Pictures/background.jpg &
+feh --bg-scale $HOME/Pictures/background.jpg
 eval $(gnome-keyring-daemon -s -- components=pkcs11,secrets,ssh,gpg) & 
 bash $HOME/.config/polybar/launch.sh &
 unclutter &
 greenclip daemon &
+xinput --set-prop "Logitech USB Receiver" "Coordinate Transformation Matrix" 0.5 0 0 0 0.5 0 0 0 1
 
-bspc monitor -d I II III IV V VI
+bspc monitor -d 1 2 3 4 5
 
 bspc config border_width 2
-bspc config window_gap8
+bspc config window_gap 10
 bspc config focused_border_color "#65737e"
 bspc config normal_border_color "#2b303b"
 

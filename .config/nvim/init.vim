@@ -45,7 +45,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jparise/vim-graphql'
 Plug 'shime/vim-livedown'
-Plug 'vim-scripts/paredit.vim', { 'for': ['clojure', 'scheme'] }
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'tpope/vim-dotenv'
@@ -58,8 +57,6 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'tpope/vim-fireplace'
-Plug 'venantius/vim-cljfmt'
 call plug#end()
 
 " ========
@@ -79,9 +76,9 @@ set termguicolors
 set syntax=on
 
 " set italics
-highlight Comment gui=italic
-set t_ZH=^[[3m
-set t_ZR=^[[23m
+" highlight Comment gui=italic
+" set t_ZH=^[[3m
+" set t_ZR=^[[23m
 
 " utf8 as default encoding
 set encoding=utf8
@@ -151,6 +148,8 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
+au BufRead,BufNewFile Dockerfile.* set filetype=dockerfile
+
 set noerrorbells    " ┐
 set novisualbell    " │ disable error
 set t_vb=           " │ sounds
@@ -168,7 +167,15 @@ endfunction
 augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
+  augroup END
+
+function! Scrollbar()
+    let width = 9
+    let perc = (line('.') - 1.0) / (max([line('$'), 2]) - 1.0)
+    let before = float2nr(round(perc * (width - 3)))
+    let after = width - 3 - before
+    return '[' . repeat(' ',  before) . '=' . repeat(' ', after) . ']'
+endfunction
 
 " ======
 "  Text
@@ -180,9 +187,9 @@ set expandtab
 " be smart when using tabs
 set smarttab
 
-" indent by 4 by default
-set shiftwidth=4
-set tabstop=4
+" indent by 2 by default
+set shiftwidth=2
+set tabstop=2
 
 " automatically indents
 set autoindent
@@ -289,14 +296,16 @@ set laststatus=2
 let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive', 'filename' ] ]
+    \   'left': [ [ 'mode', 'gitbranch', 'paste' ],
+    \             [ 'fugitive', 'filename', 'simon' ] ],
+    \   'right': [ [ 'scrollbar' ], [ 'filetype'] ],
     \ },
     \ 'component_function': {
     \   'fugitive': 'MyFugitive',
     \   'readonly': 'MyReadonly',
     \   'modified': 'MyModified',
-    \   'filename': 'MyFilename'
+    \   'filename': 'MyFilename',
+    \   'scrollbar': 'Scrollbar',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '|', 'right': '|' }
@@ -328,11 +337,8 @@ endfunction
 
 " LightLine: Will make use of plugin Fugitive to show branch and `` icon
 function! MyFugitive()
-    if exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? ' '._ : ''
-    endif
-    return ''
+  let _ = fugitive#head()
+  return strlen(_) ? ' '._ : ''
 endfunction
 
 function! MyFilename()
@@ -349,12 +355,13 @@ let NERDTreeDirArrows = 1
 let NERDTreeQuitOnOpen = 0
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeChDirMode=2
+let NERDTreeShowHidden=1
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " VimTerraform: settings
 let g:terraform_align = 1
 let g:terraform_fmt_on_save = 1
-
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " GitGutter: settings
 autocmd BufWritePost * GitGutter
