@@ -1,4 +1,23 @@
 #!/usr/bin/env bash
 
-DATE="$(date +%Y-%m-%d) $(date +%H:%M:%S)"
-ffmpeg -f x11grab -r 30 -i :1 -q:v 0 -vcodec mpeg4 "$DATE.mp4"
+# params as env vars
+#   FPS=n
+#   DELAY=n 
+#   MONITOR=<monitor id>
+FPS=${FPS:-60}
+DELAY=${DELAY:-0}
+MONITOR=${MONITOR:-primary}
+
+sleep "$DELAY"
+
+DATE="$(date +%Y-%m-%d)_$(date +%H:%M:%S)"
+OUTPUT_DIR="$(xdg-user-dir VIDEOS)/recordings"
+OUTPUT="$OUTPUT_DIR/$DATE.mp4"
+mkdir -p $OUTPUT_DIR
+
+size_pos=$(xrandr -q | grep $MONITOR | grep -Eo "[[:digit:]]*x[[:digit:]]*\+[[:digit:]]*\+[[:digit:]]*" | awk -F+ '{print " -s " $1 " -i :1+"$2"+"$3}')
+
+echo "Starting recording. Ctrl-C to stop recording."
+ffmpeg -hide_banner -loglevel error -f x11grab $size_pos -q:v 0 -r $FPS -vcodec mpeg4 "$OUTPUT"
+
+echo "Recording saved: $OUTPUT"
