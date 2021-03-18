@@ -9,22 +9,30 @@ super + Return
 # program launcher
 alt + space
 	rofi -modi drun -show drun -font "hack 12" -location 1 -width 100 \
-         -line-margin 0 -lines 1 -line-padding 0 \
-         -separator-style none -columns 9 -bw 0 \
-         -disable-history -hide-scrollbar \
-		 -color-window "#2b303b, #4F5B66, #65737e" \
-		 -color-normal "#2b303b, #c0c5ce, #2b303b, #343D46, #c0c5ce" \
-		 -color-active "#2b303b, #c0c5ce, #2b303b, #007763, #000000" \
-		 -color-urgent "#2b303b, #c0c5ce, #2b303b, #77003d, #b1b4b3"
-         -kb-row-select "Tab" -kb-row-tab ""
+    -line-margin 0 -lines 1 -line-padding 0 \
+    -separator-style none -columns 9 -bw 0 \
+    -disable-history -hide-scrollbar \
+    -color-window "#2b303b, #4F5B66, #65737e" \
+    -color-normal "#2b303b, #c0c5ce, #2b303b, #343D46, #c0c5ce" \
+    -color-active "#2b303b, #c0c5ce, #2b303b, #007763, #000000" \
+    -color-urgent "#2b303b, #c0c5ce, #2b303b, #77003d, #b1b4b3"
+    -kb-row-select "Tab" -kb-row-tab ""
 
 super + alt + c
 	rofi -modi "clipboard:greenclip print" -show clipboard -font "hack 12" -run-command '{cmd}' \
-         -separator-style none -bw 1 -width 450 \
-		 -color-window "#2b303b, #4F5B66, #65737e" \
-		 -color-normal "#2b303b, #c0c5ce, #2b303b, #343D46, #c0c5ce" \
-		 -color-active "#2b303b, #c0c5ce, #2b303b, #007763, #000000" \
-		 -color-urgent "#2b303b, #c0c5ce, #2b303b, #77003d, #b1b4b3"
+    -separator-style none -bw 1 -width 450 \
+    -color-window "#2b303b, #4F5B66, #65737e" \
+    -color-normal "#2b303b, #c0c5ce, #2b303b, #343D46, #c0c5ce" \
+    -color-active "#2b303b, #c0c5ce, #2b303b, #007763, #000000" \
+    -color-urgent "#2b303b, #c0c5ce, #2b303b, #77003d, #b1b4b3"
+
+super + Tab
+  rofi -modi window -show window -font "hack 12" \
+    -separator-style none -bw 1 -width 700 \
+    -color-window "#2b303b, #4F5B66, #65737e" \
+    -color-normal "#2b303b, #c0c5ce, #2b303b, #343D46, #c0c5ce" \
+    -color-active "#2b303b, #c0c5ce, #2b303b, #007763, #000000" \
+    -color-urgent "#2b303b, #c0c5ce, #2b303b, #77003d, #b1b4b3"
     
 
 super + space
