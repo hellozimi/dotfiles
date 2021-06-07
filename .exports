@@ -11,3 +11,4 @@ export CGO_CFLAGS_ALLOW=".*"
 export GOPRIVATE="github.com/hellozimi"
 export GTK_IM_MODULE="xim"
 export EDITOR=nvim
+export LESS="-SRXF"

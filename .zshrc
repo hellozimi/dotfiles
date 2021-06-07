@@ -121,4 +121,3 @@ unset file
 PROMPT="%B%~ %F{3}λ%f%b "
 RPROMPT='%F{8}%*%f'
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

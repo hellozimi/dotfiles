@@ -36,6 +36,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
+Plug 'arcticicestudio/nord-vim'
 
 " Productivity
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -69,7 +70,7 @@ call plug#end()
 " dark background color
 set background=dark
 
-" jellybeans colorscheme
+" nord colorscheme
 colorscheme base16-ocean
 
 " true color for neovim
@@ -180,9 +181,9 @@ set expandtab
 " be smart when using tabs
 set smarttab
 
-" indent by 4 by default
-set shiftwidth=4
-set tabstop=4
+" indent by 2 by default
+set shiftwidth=2
+set tabstop=2
 
 " automatically indents
 set autoindent
@@ -228,19 +229,22 @@ noremap <C-d> <C-d>zz<CR>
 noremap <C-u> <C-u>z<CR>
 
 " move lines with alt+j/k
-nnoremap ∆ :m .+1<CR>==
-nnoremap ˚ :m .-2<CR>==
-inoremap ∆ <Esc>:m .+1<CR>==gi
-inoremap ˚ <Esc>:m .-2<CR>==gi
-vnoremap ∆ :m '>+1<CR>gv=gv
-vnoremap ˚ :m '<-2<CR>gv=gv
+nnoremap <A-Up> :m .-2<CR>==
+nnoremap <A-Down> :m .+1<CR>==
+inoremap <A-Up> <Esc>:m .-2<CR>==gi
+inoremap <A-Down> <Esc>:m .+1<CR>==gi
+vnoremap <A-Up> :m '<-2<CR>gv=gv
+vnoremap <A-Down> :m '>+1<CR>gv=gv
 
-nnoremap <M-j> :m .+1<CR>==
-nnoremap <M-k> :m .-2<CR>==
-inoremap <M-k> <Esc>:m .-2<CR>==gi
-inoremap <M-j> <Esc>:m .+1<CR>==gi
-vnoremap <M-j> :m '>+1<CR>gv=gv
-vnoremap <M-k> :m '<-2<CR>gv=gv
+" no paste on middle mouse
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
+map <2-MiddleMouse> <Nop>
+imap <2-MiddleMouse> <Nop>
+map <3-MiddleMouse> <Nop>
+imap <3-MiddleMouse> <Nop>
+map <4-MiddleMouse> <Nop>
+imap <4-MiddleMouse> <Nop>
 
 " clears search
 map <Leader>h :nohl<CR>
@@ -282,6 +286,20 @@ let g:go_fmt_command = "goimports"
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+" color swap
+
+function! Color_swap()
+  if system('defaults read dev.smn.macos system.colorscheme') =~ 'dark'
+    set background=dark
+    colors base16-onedark
+  else
+    set background=light
+    colors base16-one-light
+  endif
+endfunction
+
+call Color_swap()
+command! ColorSwap call Color_swap()
 
 " LightLine: settings
 set laststatus=2

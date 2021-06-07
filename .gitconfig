@@ -33,3 +33,5 @@
     gpgsign = true
 [pull]
 	ff = only
+[gpg]
+	program = gpg
