@@ -14,6 +14,15 @@ shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
+# Moving to display
+shift + alt + ctrl - h : w=$(yabai -m query --windows --window | jq '.id') && \
+                      yabai -m window --display next && \
+                      yabai -m window --focus ${w}
+shift + alt + ctrl - l : w=$(yabai -m query --windows --window | jq '.id') && \
+                      yabai -m window --display prev && \
+                      yabai -m window --focus ${w}
+
+# Moving to space
 shift + cmd - 1 : yabai -m window --space 1
 shift + cmd - 2 : yabai -m window --space 2
 shift + cmd - 3 : yabai -m window --space 3

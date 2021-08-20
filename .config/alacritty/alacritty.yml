@@ -11,9 +11,15 @@ window:
   decorations: None
 
 font:
-  normal:
-    family: "JetBrains Mono"
   size: 15
+  normal:
+    family: "JetBrains Mono NL"
+    style: "Regular"
+  bold:
+    style: "Medium"
+  use_thin_stroke: true
+  offset:
+    y: 3
 
 mouse:
   hide_when_typing: true

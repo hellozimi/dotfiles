@@ -51,6 +51,8 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'tpope/vim-dotenv'
 Plug 'vim-test/vim-test'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Programming
 Plug 'mxw/vim-jsx'
@@ -376,3 +378,19 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " GitGutter: settings
 autocmd BufWritePost * GitGutter
+
+
+" UltiSnips: settings
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-l>"
+
+au BufRead,BufNewFile *.prisma set ft=prisma
+
+if executable("prisma")
+  function PrismaFormat()
+    execute ":silent !prisma format --schema " expand('%:p') ""
+    execute ":silent e!"
+  endfunction
+
+  autocmd! FileType prisma autocmd! BufWritePost * call PrismaFormat()
+endif
