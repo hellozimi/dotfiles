@@ -51,7 +51,20 @@ cmd + ctrl + shift - up : yabai -m space --toggle mission-control
 # Fullscreen
 alt - f         : yabai -m window --toggle zoom-fullscreen; \
     yabai -m space --toggle padding
-shift + alt - f : yabai -m window --toggle native-fullscreen
+
+# Zoom parent
+shift + alt - f : yabai -m window --toggle zoom-parent
 
 # Rebalance
 ctrl + alt - 0 : yabai -m space --balance
+
+
+# float / unfloat window and center on screen
+alt - t : yabai -m window --toggle float;\
+          yabai -m window --grid 4:4:1:1:2:2
+#
+# float / unfloat window and center and full height on screen
+shift + alt - t : w=$(yabai -m query --windows --window | jq '.pid') && \
+          yabai -m query --windows --space | jq '.[].pid' | grep -ve $w | xargs -I '{}' ~/.local/bin/hide-window '{}'; \
+          yabai -m window --toggle float;\
+          yabai -m window --grid 1:4:1:1:2:2

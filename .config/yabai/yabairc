@@ -35,7 +35,7 @@ yabai -m config window_gap                   8
 
 # Spacebar/status bar height
 SPACEBAR_HEIGHT=$(spacebar -m config height)
-yabai -m config external_bar all:$SPACEBAR_HEIGHT:0
+# yabai -m config external_bar all:$SPACEBAR_HEIGHT:0
 
 # Specific rules
 yabai -m rule --add app="^System Preferences$" manage=off
@@ -47,5 +47,6 @@ yabai -m rule --add title="^Battle.net Login$" manage=off
 yabai -m rule --add title="^Discord Updater$" manage=off
 yabai -m rule --add title="About This Mac" manage=off
 yabai -m rule --add app="Messages" manage=off
+yabai -m rule --add app="Notes" manage=off
 
 echo "yabai configuration loaded.."
