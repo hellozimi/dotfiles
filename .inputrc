@@ -1,8 +1,8 @@
 # Perform file completion in a case insensitive fashion
-set completion-ignore-case on
+#set completion-ignore-case on
 
 # Treat hyphens and underscores as equivalent
-set completion-map-case on
+#set completion-map-case on
 
 # Immediately add a trailing slash when autocompleting symlinks to directories
-set mark-symlinked-directories on
+#set mark-symlinked-directories on
