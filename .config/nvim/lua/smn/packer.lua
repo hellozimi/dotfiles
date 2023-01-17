@@ -53,4 +53,12 @@ return require("packer").startup(function(use)
 
   -- allows transparent background
   use "xiyaowong/nvim-transparent" 
+
+  -- autotag/pair
+  use 'windwp/nvim-autopairs'
+  use 'windwp/nvim-ts-autotag'
+
+  -- prettier
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'MunifTanjim/prettier.nvim'
 end)

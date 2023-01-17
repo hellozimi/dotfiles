@@ -19,3 +19,10 @@ nmap("<C-j>", "<C-W>j")
 nmap("<C-k>", "<C-W>k")
 nmap("<C-h>", "<C-W>h")
 nmap("<C-l>", "<C-W>l")
+
+nnoremap("j", "gj")
+nnoremap("k", "gk")
+
+nnoremap("n", "nzz")
+nnoremap("N", "Nzz")
+

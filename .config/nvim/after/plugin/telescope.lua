@@ -4,7 +4,22 @@ nnoremap("<leader>ff", builtin.find_files, {})
 nnoremap("<leader>fb", builtin.buffers, {})
 nnoremap("<leader>fg", builtin.live_grep, {})
 nnoremap("<leader>fh", builtin.help_tags, {})
+nnoremap("<leader>vrr", builtin.lsp_references, {})
 
 require("telescope").load_extension "file_browser"
+
+require("telescope").setup {
+  defaults = {
+    mappings = {
+      n = {
+    	  ['<C-d>'] = require('telescope.actions').delete_buffer
+      },
+      i = {
+        ["<C-h>"] = "which_key",
+        ['<C-d>'] = require('telescope.actions').delete_buffer
+      }
+    }
+  }
+}
 
 nnoremap("<leader>fd", require "telescope".extensions.file_browser.file_browser)
