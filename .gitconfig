@@ -1,5 +1,5 @@
 [user]
-	email = simon@hiddencode.me
+	email = simon@smn.lol
 	name = Simon Andersson
 [merge]
 	tool = opendiff
@@ -10,9 +10,10 @@
 [push]
 	default = matching
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [core]
 	editor = nvim
 [github]
@@ -30,8 +31,10 @@
     logg = log --oneline --graph
     pushf = push --force-with-lease
 [commit]
-    gpgsign = true
+  gpgsign = true
 [pull]
 	ff = only
 [gpg]
 	program = gpg
+[init]
+	defaultBranch = main
