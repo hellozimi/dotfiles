@@ -71,7 +71,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    osx
+    macos
     docker
     docker-compose
     iterm2
@@ -118,6 +118,6 @@ for file in ~/.{aliases,extras,exports,functions,path}; do
 done;
 unset file
 
-PROMPT="%B%~ %F{3}λ%f%b "
-RPROMPT='%F{8}%*%f'
+#PROMPT="%B%~ %F{3}λ%f%b "
+#RPROMPT='%F{8}%*%f'
 
