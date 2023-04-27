@@ -33,10 +33,6 @@ yabai -m config left_padding                 8
 yabai -m config right_padding                8
 yabai -m config window_gap                   8
 
-# Spacebar/status bar height
-SPACEBAR_HEIGHT=$(spacebar -m config height)
-# yabai -m config external_bar all:$SPACEBAR_HEIGHT:0
-
 # Specific rules
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
@@ -46,7 +42,13 @@ yabai -m rule --add title="Info$" manage=off
 yabai -m rule --add title="^Battle.net Login$" manage=off
 yabai -m rule --add title="^Discord Updater$" manage=off
 yabai -m rule --add title="About This Mac" manage=off
+yabai -m rule --add title="^1Password" manage=off
+yabai -m rule --add title="^Leapp" manage=off
 yabai -m rule --add app="Messages" manage=off
 yabai -m rule --add app="Notes" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="1Password" manage=off
+yabai -m rule --add app="Leapp" manage=off
 
 echo "yabai configuration loaded.."
