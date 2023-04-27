@@ -77,6 +77,7 @@ plugins=(
     iterm2
     golang
     tmux
+    shrink-path
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -118,6 +119,8 @@ for file in ~/.{aliases,extras,exports,functions,path}; do
 done;
 unset file
 
-#PROMPT="%B%~ %F{3}λ%f%b "
+setopt prompt_subst
+PS1='%B$(shrink_path -f) %F{3}λ%f%b '
+#PROMPT="%B$(shrink_path -f) %F{3}λ%f%b "
 #RPROMPT='%F{8}%*%f'
 
