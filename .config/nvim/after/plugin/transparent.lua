@@ -1,4 +1,5 @@
 require("transparent").setup({
-  enable = true, -- boolean: enable transparent
-  exclude = {}, -- table: groups you don't want to clear
+  exclude_groups = {}, -- table: groups you don't want to clear
 })
+
+vim.g.transparent_enabled = true

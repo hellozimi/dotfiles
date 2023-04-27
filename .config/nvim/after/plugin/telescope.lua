@@ -2,9 +2,11 @@ local nnoremap = require("smn.keymap").nnoremap
 local builtin = require("telescope.builtin")
 nnoremap("<leader>ff", builtin.find_files, {})
 nnoremap("<leader>fb", builtin.buffers, {})
+nnoremap("<leader>fB", builtin.git_branches, {})
 nnoremap("<leader>fg", builtin.live_grep, {})
 nnoremap("<leader>fh", builtin.help_tags, {})
 nnoremap("<leader>vrr", builtin.lsp_references, {})
+nnoremap("<leader>vws", builtin.lsp_dynamic_workspace_symbols, {})
 
 require("telescope").load_extension "file_browser"
 

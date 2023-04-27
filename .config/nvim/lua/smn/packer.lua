@@ -4,12 +4,17 @@ return require("packer").startup(function(use)
 
   -- colorscheme
   use "olimorris/onedarkpro.nvim"
+  use { "catppuccin/nvim", as = "catppuccin" }
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate"
   }
+  use "shaunsingh/nord.nvim"
   use("nvim-treesitter/playground")
   use("romgrk/nvim-treesitter-context")
+  use "lukas-reineke/indent-blankline.nvim"
+
+  use "nvim-tree/nvim-tree.lua"
 
   -- git
   use "tpope/vim-fugitive"
@@ -32,17 +37,6 @@ return require("packer").startup(function(use)
   use "hrsh7th/nvim-cmp"
   use "onsails/lspkind-nvim"
   use "simrat39/symbols-outline.nvim"
-  use({
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-    config = function()
-      local saga = require("lspsaga")
-
-      saga.init_lsp_saga({
-        -- your configuration
-      })
-    end,
-  })
 
   -- fuzzy finder
   use {
@@ -50,6 +44,12 @@ return require("packer").startup(function(use)
     requires = { {"nvim-lua/plenary.nvim"} }
   }
   use "nvim-telescope/telescope-file-browser.nvim"
+
+  -- copilot
+  use "github/copilot.vim"
+
+  -- instant
+  use 'jbyuki/instant.nvim'
 
   -- allows transparent background
   use "xiyaowong/nvim-transparent" 

@@ -1,2 +1,2 @@
 vim.opt.background = "dark"
-vim.cmd("colorscheme onedarkpro")
+vim.cmd.colorscheme "catppuccin-frappe"
