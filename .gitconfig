@@ -1,40 +1,43 @@
 [user]
-	email = simon@smn.lol
-	name = Simon Andersson
+  email = simon@smn.lol
+  name = Simon Andersson
 [merge]
-	tool = opendiff
+  tool = opendiff
 [mergetool]
-	keepBackup = false
+  keepBackup = false
 [color]
-	ui = true
+  ui = true
 [push]
-	default = matching
+  default = matching
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  required = true
+  process = git-lfs filter-process
 [core]
-	editor = nvim
+  editor = nvim
 [github]
-	user = hellozimi
+  user = hellozimi
 [ghi]
-	token = !security find-internet-password -a hellozimi -s github.com -l 'ghi token' -w
+  token = !security find-internet-password -a hellozimi -s github.com -l 'ghi token' -w
 [credentials]
-	helper = osxkeychain
+  helper = osxkeychain
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [url "git@github.com:"]
-    insteadOf = https://github.com/
+	insteadOf = https://github.com/
 [alias]
-    unstage = reset HEAD --
-    logg = log --oneline --graph
-    pushf = push --force-with-lease
+  unstage = reset HEAD --
+  logg = log --oneline --graph
+  pushf = push --force-with-lease
+  ch = "!ch() { git checkout $(git for-each-ref refs/heads/ --format='%(refname:short)' | fzf); }; ch"
+  cor = "!checkout_by_regex() { git checkout $(git branch | grep -e \"$1\" | head -n1); }; checkout_by_regex"
+
 [commit]
   gpgsign = true
 [pull]
-	ff = only
+  ff = only
 [gpg]
-	program = gpg
+  program = gpg
 [init]
-	defaultBranch = main
+  defaultBranch = main
