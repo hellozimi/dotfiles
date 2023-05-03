@@ -38,6 +38,9 @@ return require("packer").startup(function(use)
   use "onsails/lspkind-nvim"
   use "simrat39/symbols-outline.nvim"
 
+-- Go
+  use "ray-x/go.nvim"
+
   -- fuzzy finder
   use {
     "nvim-telescope/telescope.nvim", tag = "0.1.0",

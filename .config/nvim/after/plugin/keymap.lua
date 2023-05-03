@@ -18,6 +18,8 @@ nmap("<C-j>", "<cmd>TmuxNavigateDown<CR>")
 nmap("<C-k>", "<cmd>TmuxNavigateUp<CR>")
 nmap("<C-l>", "<cmd>TmuxNavigateRight<CR>")
 
+nnoremap("<leader>tt", "<cmd>NvimTreeToggle<CR>")
+
 nnoremap("j", "gj")
 nnoremap("k", "gk")
 

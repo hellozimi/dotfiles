@@ -12,6 +12,7 @@ require("telescope").load_extension "file_browser"
 
 require("telescope").setup {
   defaults = {
+   file_ignore_patterns = {"node_modules"},
     mappings = {
       n = {
     	  ['<C-d>'] = require('telescope.actions').delete_buffer
