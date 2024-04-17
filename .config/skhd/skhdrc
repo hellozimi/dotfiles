@@ -1,6 +1,6 @@
 # cmd - return : alacritty
 
-ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+ctrl + alt + cmd - r : yabai --restart-service
 
 # Navigation
 alt - h : yabai -m window --focus west

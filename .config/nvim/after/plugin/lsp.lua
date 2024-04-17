@@ -50,18 +50,6 @@ cmp.setup({
 })
 
 function on_attach()
-  -- vim.api.nvim_create_autocmd('BufWritePre', {
-  --   pattern = '<buffer>',
-  --   callback = function()
-  --     vim.lsp.buf.format()
-  --   end
-  -- })
-  -- vim.api.nvim_create_autocmd('BufWritePre', {
-  --   pattern = '<buffer>',
-  --   callback = function()
-  --     vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
-  --   end
-  -- })
   nnoremap("gd", function() vim.lsp.buf.definition() end)
   nnoremap("K", function() vim.lsp.buf.hover() end)
   nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)

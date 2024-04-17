@@ -1,5 +1,5 @@
 [user]
-  email = simon@smn.lol
+  email = simon@moyst.tech
   name = Simon Andersson
 [merge]
   tool = opendiff
@@ -32,6 +32,7 @@
   pushf = push --force-with-lease
   ch = "!ch() { git checkout $(git for-each-ref refs/heads/ --format='%(refname:short)' | fzf); }; ch"
   cor = "!checkout_by_regex() { git checkout $(git branch | grep -e \"$1\" | head -n1); }; checkout_by_regex"
+  cb = "rev-parse --abbrev-ref HEAD"
 
 [commit]
   gpgsign = true
