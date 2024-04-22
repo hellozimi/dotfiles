@@ -3,3 +3,4 @@ export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$GOBIN
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"

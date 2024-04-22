@@ -1,7 +1,2 @@
-*
-!.config/nvim
-!.config/skhd
-!.config/yabai
-!.config/iterm2
-!.config/karabiner
-!.config/pgcli
+.config/yarn/*
+.local/*
