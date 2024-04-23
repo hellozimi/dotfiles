@@ -37,10 +37,6 @@ require'nvim-tree'.setup {
     adaptive_size = true,
     centralize_selection =true,
     side = 'left',
-    mappings = {
-      custom_only = false,
-      list = {}
-    },
     float = {
       enable = true
     }
