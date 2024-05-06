@@ -7,7 +7,12 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Catppuccin Frappé",
+  "languages": {
+    "Go": {
+      "show_copilot_suggestions": false
+    }
+  },
+  "theme": "Catppuccin Frappé - No Italics",
   "base_keymap": "VSCode",
   "vim_mode": true,
   "ui_font_size": 16,
