@@ -1,7 +1,7 @@
 [user]
   email = simon@moyst.tech
   name = Simon Andersson
-	signingkey = 60DC7B4718AAE0DC3ECD61CCF8EBFFEF97D82BB8
+	signingkey = CB4E9FA172E5E2B44F8DC42110A2D80658B60FE4
 [merge]
   tool = opendiff
 [mergetool]
