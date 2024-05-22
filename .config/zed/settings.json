@@ -22,5 +22,8 @@
   "buffer_line_height": "comfortable",
   "vertical_scroll_margin": 5,
   "relative_line_numbers": true,
-  "preferred_line_length": 120
+  "preferred_line_length": 120,
+  "project_panel": {
+    "dock": "right"
+  }
 }

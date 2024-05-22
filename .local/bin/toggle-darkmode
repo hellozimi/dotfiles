@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# it's not pretty but it's working
+
+darkmode_theme="catppuccin_frappe"
+lightmode_theme="catppuccin_latte"
+
+is_darkmode=$(grep -q "$darkmode_theme" ~/.config/alacritty/alacritty.toml && echo true || echo false)
+
+alacritty_current_theme=$([[ $is_darkmode == "true" ]] && echo $darkmode_theme || echo $lightmode_theme)
+alacritty_new_theme=$([[ $is_darkmode == "true" ]] && echo $lightmode_theme || echo $darkmode_theme)
+
+tmux_current_theme=$([[ $is_darkmode == "true" ]] && echo 'frappe' || echo 'latte')
+tmux_new_theme=$([[ $is_darkmode == "true" ]] && echo 'latte' || echo 'frappe')
+
+vim_current_bakground=$([[ $is_darkmode == "true" ]] && echo 'dark' || echo 'light')
+vim_next_bakground=$([[ $is_darkmode == "true" ]] && echo 'light' || echo 'dark')
+vim_current_theme=$(echo $alacritty_current_theme | tr '_' '-')
+vim_next_theme=$(echo $alacritty_new_theme | tr '_' '-')
+
+gsed -i "s/$alacritty_current_theme/$alacritty_new_theme/" ~/.config/alacritty/alacritty.toml
+gsed -i -E "s/(@catppuccin_flavour) '$tmux_current_theme'/\1 '$tmux_new_theme'/" ~/.tmux.conf
+
+# switch vim theme from: https://shapeshed.com/vim-tmux-alacritty-theme-switcher/
+switch_vim_theme() {
+  theme_for_vim_panes="$1"
+  tmux list-panes -a -F '#{pane_id} #{pane_current_command}' |
+    grep vim | # this captures vim and nvim
+    cut -d ' ' -f 1 |
+    xargs -I PANE tmux send-keys -t PANE ESCAPE \
+      ":set background=${theme_for_vim_panes}" ENTER
+}
+
+switch_vim_theme $vim_next_bakground
+gsed -i "s/$vim_current_bakground/${vim_next_bakground}/" ~/.config/nvim/lua/smn/color.lua
+gsed -i "s/$vim_current_theme/$vim_next_theme/" ~/.config/nvim/after/plugin/color.lua
+tmux source-file ~/.tmux.conf

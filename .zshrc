@@ -33,6 +33,8 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(fnm env --use-on-cd)"
 
+autoload -Uz compinit
+
 # pnpm
 export PNPM_HOME="/Users/simon/Library/pnpm"
 case ":$PATH:" in
