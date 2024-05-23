@@ -5,21 +5,31 @@
 darkmode_theme="catppuccin_frappe"
 lightmode_theme="catppuccin_latte"
 
+zed_darkmode_theme="Catppuccin Frappé - No Italics"
+zed_lightmode_theme="Catppuccin Latte - No Italics"
+
+tmux_darkmode_theme="frappe"
+tmux_lightmode_theme="latte"
+
 is_darkmode=$(grep -q "$darkmode_theme" ~/.config/alacritty/alacritty.toml && echo true || echo false)
 
 alacritty_current_theme=$([[ $is_darkmode == "true" ]] && echo $darkmode_theme || echo $lightmode_theme)
 alacritty_new_theme=$([[ $is_darkmode == "true" ]] && echo $lightmode_theme || echo $darkmode_theme)
 
-tmux_current_theme=$([[ $is_darkmode == "true" ]] && echo 'frappe' || echo 'latte')
-tmux_new_theme=$([[ $is_darkmode == "true" ]] && echo 'latte' || echo 'frappe')
+tmux_current_theme=$([[ $is_darkmode == "true" ]] && echo $tmux_darkmode_theme || echo $tmux_lightmode_theme)
+tmux_new_theme=$([[ $is_darkmode == "true" ]] && echo $tmux_lightmode_theme || echo $tmux_darkmode_theme)
 
 vim_current_bakground=$([[ $is_darkmode == "true" ]] && echo 'dark' || echo 'light')
 vim_next_bakground=$([[ $is_darkmode == "true" ]] && echo 'light' || echo 'dark')
 vim_current_theme=$(echo $alacritty_current_theme | tr '_' '-')
 vim_next_theme=$(echo $alacritty_new_theme | tr '_' '-')
 
+zed_current_theme=$([[ $is_darkmode == "true" ]] && echo $zed_darkmode_theme || echo $zed_lightmode_theme)
+zed_new_theme=$([[ $is_darkmode == "true" ]] && echo $zed_lightmode_theme || echo $zed_darkmode_theme)
+
 gsed -i "s/$alacritty_current_theme/$alacritty_new_theme/" ~/.config/alacritty/alacritty.toml
 gsed -i -E "s/(@catppuccin_flavour) '$tmux_current_theme'/\1 '$tmux_new_theme'/" ~/.tmux.conf
+gsed -i "s/$zed_current_theme/$zed_new_theme/" ~/.config/zed/settings.json
 
 # switch vim theme from: https://shapeshed.com/vim-tmux-alacritty-theme-switcher/
 switch_vim_theme() {
