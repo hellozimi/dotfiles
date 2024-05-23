@@ -1,13 +1,8 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run the `open default settings` command
-// from the command palette or from `Zed` application menu.
 {
   "languages": {
+    "TypeScript": {
+      "show_inline_completions": false
+    },
     "Go": {
       "show_copilot_suggestions": false
     }
@@ -23,7 +18,15 @@
   "vertical_scroll_margin": 5,
   "relative_line_numbers": true,
   "preferred_line_length": 120,
+  "seed_search_query_from_cursor": "never",
+  "double_click_in_multibuffer": "open",
   "project_panel": {
     "dock": "right"
+  },
+  "terminal": {
+    "dock": "bottom"
+  },
+  "calls": {
+    "share_on_join": false
   }
 }
