@@ -20,16 +20,10 @@
   "preferred_line_length": 120,
   "seed_search_query_from_cursor": "never",
   "double_click_in_multibuffer": "open",
-  "tab_bar": {
-    "show": false
-  },
   "project_panel": {
     "dock": "right"
   },
   "terminal": {
     "dock": "bottom"
-  },
-  "calls": {
-    "share_on_join": false
   }
 }
