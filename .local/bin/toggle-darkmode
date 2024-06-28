@@ -21,8 +21,6 @@ tmux_new_theme=$([[ $is_darkmode == "true" ]] && echo $tmux_lightmode_theme || e
 
 vim_current_bakground=$([[ $is_darkmode == "true" ]] && echo 'dark' || echo 'light')
 vim_next_bakground=$([[ $is_darkmode == "true" ]] && echo 'light' || echo 'dark')
-vim_current_theme=$(echo $alacritty_current_theme | tr '_' '-')
-vim_next_theme=$(echo $alacritty_new_theme | tr '_' '-')
 
 zed_current_theme=$([[ $is_darkmode == "true" ]] && echo $zed_darkmode_theme || echo $zed_lightmode_theme)
 zed_new_theme=$([[ $is_darkmode == "true" ]] && echo $zed_lightmode_theme || echo $zed_darkmode_theme)
@@ -42,6 +40,5 @@ switch_vim_theme() {
 }
 
 switch_vim_theme $vim_next_bakground
-gsed -i "s/$vim_current_bakground/${vim_next_bakground}/" ~/.config/nvim/lua/smn/color.lua
-gsed -i "s/$vim_current_theme/$vim_next_theme/" ~/.config/nvim/after/plugin/color.lua
+gsed -i "s/$vim_current_bakground/${vim_next_bakground}/" ~/.config/nvim/lua/hellozimi/core/options.lua
 tmux source-file ~/.tmux.conf
