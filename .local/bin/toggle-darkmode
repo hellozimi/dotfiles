@@ -19,8 +19,8 @@ alacritty_new_theme=$([[ $is_darkmode == "true" ]] && echo $lightmode_theme || e
 tmux_current_theme=$([[ $is_darkmode == "true" ]] && echo $tmux_darkmode_theme || echo $tmux_lightmode_theme)
 tmux_new_theme=$([[ $is_darkmode == "true" ]] && echo $tmux_lightmode_theme || echo $tmux_darkmode_theme)
 
-vim_current_bakground=$([[ $is_darkmode == "true" ]] && echo 'dark' || echo 'light')
-vim_next_bakground=$([[ $is_darkmode == "true" ]] && echo 'light' || echo 'dark')
+vim_current_background=$([[ $is_darkmode == "true" ]] && echo 'dark' || echo 'light')
+vim_next_background=$([[ $is_darkmode == "true" ]] && echo 'light' || echo 'dark')
 
 zed_current_theme=$([[ $is_darkmode == "true" ]] && echo $zed_darkmode_theme || echo $zed_lightmode_theme)
 zed_new_theme=$([[ $is_darkmode == "true" ]] && echo $zed_lightmode_theme || echo $zed_darkmode_theme)
@@ -39,6 +39,8 @@ switch_vim_theme() {
       ":set background=${theme_for_vim_panes}" ENTER
 }
 
-switch_vim_theme $vim_next_bakground
-gsed -i "s/$vim_current_bakground/${vim_next_bakground}/" ~/.config/nvim/lua/hellozimi/core/options.lua
+switch_vim_theme $vim_next_background
+gsed -i "s/$vim_current_background/${vim_next_background}/" ~/.config/nvim/lua/hellozimi/core/options.lua
+system_next_mode=$([[ $is_darkmode == "true" ]] && echo "not dark mode" || echo "true")
+osascript -e "tell app \"System Events\" to tell appearance preferences to set dark mode to ${system_next_mode}"
 tmux source-file ~/.tmux.conf
