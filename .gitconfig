@@ -31,7 +31,7 @@
   unstage = reset HEAD --
   logg = log --oneline --graph
   pushf = push --force-with-lease
-  ch = "!ch() { git checkout $(git for-each-ref refs/heads/ --format='%(refname:short)' | fzf); }; ch"
+  ch = "!ch() { git checkout $(git for-each-ref refs/heads/ --format='%(refname:short)' | fzf-tmux -p --reverse); }; ch"
   cor = "!checkout_by_regex() { git checkout $(git branch | grep -e \"$1\" | head -n1); }; checkout_by_regex"
   cb = "rev-parse --abbrev-ref HEAD"
 
