@@ -6,11 +6,15 @@ import = [
 TERM = "xterm-256color"
 
 [window]
-padding.x = 10
-padding.y = 10
+padding.x = 20
+padding.y = 20
 decorations = "Buttonless"
 option_as_alt = "Both"
 
 [font]
-normal.family = "JetBrainsMonoNL Nerd Font"
-size = 17
+normal.family = "JetBrainsMono Nerd Font"
+normal.style = "Regular"
+italic.style = "Regular"
+bold.style = "Medium"
+offset.y = 10
+size = 18
