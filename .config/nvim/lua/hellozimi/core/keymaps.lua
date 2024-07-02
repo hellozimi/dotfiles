@@ -9,11 +9,10 @@ K.nnoremap("<C-d>", "<C-d>zz")
 K.nnoremap("<C-u>", "<C-u>zz")
 K.nnoremap("<leader>d", "\"_d")
 K.vnoremap("<leader>d", "\"_d")
+K.vnoremap("<leader>p", "\"_dP")
 
-K.nnoremap("<leader>tt", "<cmd>NvimTreeToggle<CR>")
 K.nnoremap("j", "gj")
 K.nnoremap("k", "gk")
-
 K.nnoremap("n", "nzz")
 K.nnoremap("N", "Nzz")
 
