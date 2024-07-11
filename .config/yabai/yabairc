@@ -43,13 +43,11 @@ yabai -m rule --add title="^Battle.net Login$" manage=off
 yabai -m rule --add title="^Discord Updater$" manage=off
 yabai -m rule --add title="About This Mac" manage=off
 yabai -m rule --add title="^1Password" manage=off
-yabai -m rule --add title="^Leapp" manage=off
 yabai -m rule --add app="Messages" manage=off
 yabai -m rule --add app="Notes" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="1Password" manage=off
 yabai -m rule --add app="Leapp" manage=off
-yabai -m rule --add app="Screen Studio" manage=off
 
 echo "yabai configuration loaded.."
