@@ -4,16 +4,17 @@ return {
   priority = 1000,
   config = function()
     require("catppuccin").setup({
-      flavour = "frappe",
+      flavour = "mocha",
       background = {
         light = "latte",
-        dark = "frappe",
+        dark = "mocha",
       },
       styles = {
         comments = {},
         conditionals = {},
       },
     })
-    vim.cmd("colorscheme catppuccin-frappe")
+    --vim.opt.background = 'light'
+    --vim.cmd("colorscheme catppuccin-mocha")
   end
 }
