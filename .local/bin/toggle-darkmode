@@ -2,13 +2,13 @@
 
 # it's not pretty but it's working
 
-darkmode_theme="catppuccin_frappe"
+darkmode_theme="catppuccin_mocha"
 lightmode_theme="catppuccin_latte"
 
-zed_darkmode_theme="Catppuccin Frappé - No Italics"
+zed_darkmode_theme="Catppuccin Mocha - No Italics"
 zed_lightmode_theme="Catppuccin Latte - No Italics"
 
-tmux_darkmode_theme="frappe"
+tmux_darkmode_theme="mocha"
 tmux_lightmode_theme="latte"
 
 is_darkmode=$(grep -q "$darkmode_theme" ~/.config/alacritty/alacritty.toml && echo true || echo false)

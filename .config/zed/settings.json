@@ -1,4 +1,14 @@
 {
+  "assistant": {
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-4o-mini"
+    },
+    "version": "2"
+  },
+  "features": {
+    "inline_completion_provider": "none"
+  },
   "languages": {
     "TSX": {
       "show_inline_completions": false
@@ -10,7 +20,7 @@
       "show_inline_completions": false
     }
   },
-  "theme": "Catppuccin Frappé - No Italics",
+  "theme": "Catppuccin Mocha - No Italics",
   "base_keymap": "VSCode",
   "vim_mode": true,
   "ui_font_size": 19,
