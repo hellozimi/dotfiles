@@ -4,6 +4,7 @@ alias pip="pip3"
 
 # Alias for nvim
 alias vim="nvim"
+alias vgit='vim +Git +only'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
