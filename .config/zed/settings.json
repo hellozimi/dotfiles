@@ -33,6 +33,10 @@
   "preferred_line_length": 120,
   "seed_search_query_from_cursor": "never",
   "double_click_in_multibuffer": "open",
+  "chat_panel": {
+    "button": false
+  },
+  "show_signature_help_after_edits": false,
   "project_panel": {
     "dock": "right"
   },

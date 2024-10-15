@@ -23,5 +23,10 @@
     "bindings": {
       "super ctrl t": ["workspace::SendKeystrokes", "escape"]
     }
+  },
+  {
+    "bindings": {
+      "ctrl-6": "outline::Toggle"
+    }
   }
 ]
