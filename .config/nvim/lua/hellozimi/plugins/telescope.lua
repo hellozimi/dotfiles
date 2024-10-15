@@ -37,6 +37,7 @@ return {
     K.nnoremap("<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     K.nnoremap("<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
     K.nnoremap("<leader>fr", "<cmd>Telescope lsp_references<cr>", {})
+    K.nnoremap("<leader>fds", "<cmd>Telescope lsp_document_symbols<cr>", {})
     K.nnoremap("<leader>fws", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", {})
   end,
 }

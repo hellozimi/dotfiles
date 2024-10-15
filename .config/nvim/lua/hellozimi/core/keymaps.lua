@@ -16,6 +16,8 @@ K.nnoremap("k", "gk")
 K.nnoremap("n", "nzz")
 K.nnoremap("N", "Nzz")
 
+K.nnoremap("<C-?>", ":CodeCompanion")
+
 -- window management
 K.nnoremap("<leader>sv", "<C-w>v", { desc = "Split window vertically" })     -- split window vertically
 K.nnoremap("<leader>sh", "<C-w>s", { desc = "Split window horizontally" })   -- split window horizontally
@@ -26,3 +28,5 @@ K.nnoremap("<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- 
 -- keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 -- keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 -- keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+K.nnoremap('<leader>?', ':CodeCompanionChat<CR>')
