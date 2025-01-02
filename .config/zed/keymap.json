@@ -28,5 +28,10 @@
     "bindings": {
       "ctrl-6": "outline::Toggle"
     }
+  },
+  {
+    "bindings": {
+      "super-shift-e": "file_finder::ToggleMenu"
+    }
   }
 ]
