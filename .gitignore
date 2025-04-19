@@ -13,6 +13,9 @@
 .config/zed/conversations
 .config/zed/embeddings
 .config/zed/prompts
-.config/.open-api
+.config/zed/.tmp*
+.config/karabiner/automatic_backups
+.config/.open-ai
+.config/.anthropic
 .local/share
 .local/state
