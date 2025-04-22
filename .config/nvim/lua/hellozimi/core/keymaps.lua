@@ -1,6 +1,5 @@
 local K = require("hellozimi.core.keymap")
 
--- keymap.set("n", "<leader>hl", ":nohl<CR>", { desc = "Clear search highlights" })
 K.nnoremap("<leader>hl", ":nohl<CR>")
 
 K.vnoremap("K", ":m '<-2<CR>gv=gv")
@@ -24,9 +23,9 @@ K.nnoremap("<leader>sh", "<C-w>s", { desc = "Split window horizontally" })   -- 
 K.nnoremap("<leader>se", "<C-w>=", { desc = "Make splits equal size" })      -- make split windows equal width & height
 K.nnoremap("<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
--- keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
--- keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
--- keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
--- keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+-- git mappings
+K.nnoremap("<leader>gl", ":Git log --oneline -75<CR>", { desc = "oneline git log the last 75 commits" })
+K.nnoremap("<leader>gB", ":GBrowse!<CR>", { desc = "Copies github permalink at line" })
+K.vnoremap("<leader>gB", ":GBrowse!<CR>", { desc = "Copies github permalink for selected lines" })
 
 K.nnoremap('<leader>?', ':CodeCompanionChat<CR>')
