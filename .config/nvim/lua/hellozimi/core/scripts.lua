@@ -1,0 +1,11 @@
+vim.api.nvim_create_user_command('Cpaf', function()
+  local current_file_path = vim.fn.expand('%:p')
+  vim.fn.setreg('+', current_file_path)
+  vim.notify('Copied file path: ' .. current_file_path, vim.log.levels.INFO)
+end, {})
+
+vim.api.nvim_create_user_command('Cprf', function()
+  local current_file_path = vim.fn.expand('%p')
+  vim.fn.setreg('+', current_file_path)
+  vim.notify('Copied file path: ' .. current_file_path, vim.log.levels.INFO)
+end, {})
