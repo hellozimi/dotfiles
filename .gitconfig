@@ -9,7 +9,8 @@
 [color]
   ui = true
 [push]
-  default = matching
+	default = current
+	autoSetupRemote = true
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f

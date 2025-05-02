@@ -9,7 +9,10 @@ return {
       style = "night",
       -- disable italic for functions
       styles = {
-        functions = {}
+        keywords = { italic = false },
+        comments = { reverse = false, bold = true },
+        functions = { italic = false },
+        variables = { italic = false, bold = true },
       },
       -- Change the "hint" color to the "orange" color, and make the "error" color bright red
       on_colors = function(colors)
