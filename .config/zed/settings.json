@@ -16,7 +16,7 @@
       "code-writer": {
         "name": "Code Writer",
         "tools": {
-          "bash": true,
+          "terminal": true,
           "copy-path": true,
           "create-file": true,
           "delete-path": true,
@@ -52,7 +52,7 @@
       "show_edit_predictions": false
     }
   },
-  "theme": "Tokyo Night",
+  "theme": "Catppuccin Mocha - No Italics",
   "base_keymap": "VSCode",
   "vim_mode": true,
   "ui_font_size": 19,

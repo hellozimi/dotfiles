@@ -3,7 +3,7 @@ window-inherit-working-directory = false
 
 font-family = JetBrainsMonoNL NFM Medium
 font-size = 18
-theme = dark:tokyonight,light:tokyonight-day
+theme = dark:catppuccin-mocha,light:catppuccin-latte
 
 adjust-cell-height = 25%
 

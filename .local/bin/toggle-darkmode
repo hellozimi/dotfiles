@@ -25,9 +25,9 @@ vim_next_background=$([[ $is_darkmode == "true" ]] && echo 'light' || echo 'dark
 zed_current_theme=$([[ $is_darkmode == "true" ]] && echo $zed_darkmode_theme || echo $zed_lightmode_theme)
 zed_new_theme=$([[ $is_darkmode == "true" ]] && echo $zed_lightmode_theme || echo $zed_darkmode_theme)
 
-gsed -i "s/$alacritty_current_theme/$alacritty_new_theme/" ~/.config/alacritty/alacritty.toml
-gsed -i -E "s/(@catppuccin_flavour) '$tmux_current_theme'/\1 '$tmux_new_theme'/" ~/.tmux.conf
-gsed -i "s/$zed_current_theme/$zed_new_theme/" ~/.config/zed/settings.json
+gsed -i "s/$alacritty_current_theme/$alacritty_new_theme/" ~/dotfiles/.config/alacritty/alacritty.toml
+gsed -i -E "s/(@catppuccin_flavour) '$tmux_current_theme'/\1 '$tmux_new_theme'/" ~/dotfiles/.tmux.conf
+gsed -i "s/$zed_current_theme/$zed_new_theme/" ~/dotfiles/.config/zed/settings.json
 
 # switch vim theme from: https://shapeshed.com/vim-tmux-alacritty-theme-switcher/
 switch_vim_theme() {
@@ -40,7 +40,7 @@ switch_vim_theme() {
 }
 
 switch_vim_theme $vim_next_background
-gsed -i "s/$vim_current_background/${vim_next_background}/" ~/.config/nvim/lua/hellozimi/core/options.lua
+gsed -i "s/$vim_current_background/${vim_next_background}/" ~/dotfiles/.config/nvim/lua/hellozimi/core/options.lua
 system_next_mode=$([[ $is_darkmode == "true" ]] && echo "not dark mode" || echo "true")
 osascript -e "tell app \"System Events\" to tell appearance preferences to set dark mode to ${system_next_mode}"
 tmux source-file ~/.tmux.conf
