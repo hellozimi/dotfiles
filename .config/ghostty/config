@@ -1,9 +1,9 @@
 working-directory = home
 window-inherit-working-directory = false
 
-font-family = JetBrainsMonoNL NFM Medium
+font-family = Aporetic Sans Mono
 font-size = 18
-theme = dark:catppuccin-mocha,light:catppuccin-latte
+theme = dark:kanagawabones,light:github
 
 adjust-cell-height = 25%
 
