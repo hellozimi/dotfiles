@@ -39,7 +39,6 @@ yabai -m rule --add app="^Karabiner-Elements$" manage=off
 yabai -m rule --add title="Preferences$" manage=off
 yabai -m rule --add title="^About$" manage=off
 yabai -m rule --add title="Info$" manage=off
-yabai -m rule --add title="^Battle.net Login$" manage=off
 yabai -m rule --add title="^Discord Updater$" manage=off
 yabai -m rule --add title="About This Mac" manage=off
 yabai -m rule --add title="^1Password" manage=off
@@ -49,5 +48,7 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="1Password" manage=off
 yabai -m rule --add app="Leapp" manage=off
+yabai -m rule --add app="Obsidian" manage=off
+yabai -m rule --add app="Preview" manage=off
 
 echo "yabai configuration loaded.."

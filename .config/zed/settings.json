@@ -5,13 +5,17 @@
       "username": "simon",
       "projects": [
         {
+          "paths": ["~/dev/hellozimi/faktor-mono"]
+        },
+        {
           "paths": ["~/dev/monoscope/monoscope"]
         }
       ]
     }
   ],
-  "assistant": {
-    "default_profile": "ask",
+  "agent": {
+    "always_allow_tool_actions": true,
+    "default_profile": "write",
     "profiles": {
       "code-writer": {
         "name": "Code Writer",
@@ -36,27 +40,17 @@
       }
     },
     "default_model": {
-      "provider": "zed.dev",
+      "provider": "anthropic",
       "model": "claude-3-7-sonnet-latest"
     },
     "version": "2"
   },
-  "languages": {
-    "TSX": {
-      "show_edit_predictions": false
-    },
-    "TypeScript": {
-      "show_edit_predictions": false
-    },
-    "Go": {
-      "show_edit_predictions": false
-    }
-  },
+  "show_edit_predictions": false,
   "theme": "Catppuccin Mocha - No Italics",
   "base_keymap": "VSCode",
   "vim_mode": true,
-  "ui_font_size": 19,
-  "buffer_font_size": 19,
+  "ui_font_size": 17,
+  "buffer_font_size": 17,
   "ui_font_family": "JetBrainsMonoNL Nerd Font",
   "buffer_font_family": "JetBrainsMonoNL Nerd Font",
   "buffer_line_height": "comfortable",

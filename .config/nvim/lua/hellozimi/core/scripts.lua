@@ -9,3 +9,18 @@ vim.api.nvim_create_user_command('Cprf', function()
   vim.fn.setreg('+', current_file_path)
   vim.notify('Copied file path: ' .. current_file_path, vim.log.levels.INFO)
 end, {})
+
+vim.api.nvim_create_autocmd({"WinEnter", "FocusGained"}, {
+  callback = function()
+    vim.wo.number = true
+    vim.wo.relativenumber = true
+  end,
+})
+
+vim.api.nvim_create_autocmd({"WinLeave", "FocusLost"}, {
+  callback = function()
+    vim.wo.number = true
+    vim.wo.relativenumber = false
+  end,
+})
+
