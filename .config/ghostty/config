@@ -3,7 +3,7 @@ window-inherit-working-directory = false
 
 font-family = Aporetic Sans Mono
 font-size = 18
-theme = dark:kanagawabones,light:github
+theme = dark:catppuccin-mocha,light:github
 
 adjust-cell-height = 25%
 
