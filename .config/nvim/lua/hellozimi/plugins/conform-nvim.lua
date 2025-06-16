@@ -21,6 +21,9 @@ return {
         liquid = prettier,
         go = { "goimports-reviser", "gofumpt" },
       },
+      formatters = {
+        ["goimports-reviser"] = { prepend_args = { "-rm-unused", "-set-alias" } },
+      },
       format_on_save = {
         lsp_fallback = false,
         async = false,
