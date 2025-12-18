@@ -10,6 +10,8 @@ K.nnoremap("<leader>d", "\"_d")
 K.vnoremap("<leader>d", "\"_d")
 K.vnoremap("<leader>p", "\"_dP")
 
+K.nnoremap("<leader>s", "<cmd>up<cr>")
+
 K.nnoremap("j", "gj")
 K.nnoremap("k", "gk")
 K.nnoremap("n", "nzz")
