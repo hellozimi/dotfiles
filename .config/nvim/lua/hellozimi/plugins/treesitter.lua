@@ -30,7 +30,7 @@ return {
         "html",
         "css",
         "prisma",
-	"go",
+        "go",
         "markdown",
         "markdown_inline",
         "svelte",

@@ -33,7 +33,7 @@ return {
 
     local K = require("hellozimi.core.keymap")
     K.nnoremap("<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-    K.nnoremap("<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+    --K.nnoremap("<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     K.nnoremap("<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     K.nnoremap("<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
     K.nnoremap("<leader>fr", "<cmd>Telescope lsp_references<cr>", {})
