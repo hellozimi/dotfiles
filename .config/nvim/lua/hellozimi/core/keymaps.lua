@@ -17,8 +17,6 @@ K.nnoremap("k", "gk")
 K.nnoremap("n", "nzz")
 K.nnoremap("N", "Nzz")
 
-K.nnoremap("<C-?>", ":CodeCompanion")
-
 -- window management
 K.nnoremap("<leader>sv", "<C-w>v", { desc = "Split window vertically" })     -- split window vertically
 K.nnoremap("<leader>sh", "<C-w>s", { desc = "Split window horizontally" })   -- split window horizontally
@@ -29,5 +27,3 @@ K.nnoremap("<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- 
 K.nnoremap("<leader>gl", ":Git log --oneline -75<CR>", { desc = "oneline git log the last 75 commits" })
 K.nnoremap("<leader>gB", ":GBrowse!<CR>", { desc = "Copies github permalink at line" })
 K.vnoremap("<leader>gB", ":GBrowse!<CR>", { desc = "Copies github permalink for selected lines" })
-
-K.nnoremap('<leader>?', ':CodeCompanionChat<CR>')
