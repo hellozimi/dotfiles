@@ -13,3 +13,6 @@ window-padding-x = 16,13
 macos-titlebar-style = hidden
 macos-window-shadow = false
 macos-titlebar-proxy-icon = hidden
+
+# Fix DELETE key
+keybind = delete=text:\x1b[3~
