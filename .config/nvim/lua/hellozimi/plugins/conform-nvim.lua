@@ -19,10 +19,11 @@ return {
         markdown = prettier,
         graphql = prettier,
         liquid = prettier,
-        go = { "goimports-reviser", "gofumpt" },
+        go = { "goimports", "goimports-reviser", "gofumpt" },
       },
       formatters = {
-        ["goimports-reviser"] = { prepend_args = { "-rm-unused", "-set-alias" } },
+        ["goimports"] = { command = "/Users/simon/go/bin/goimports" },
+        ["goimports-reviser"] = { prepend_args = { "-set-alias" } },
       },
       format_on_save = {
         lsp_fallback = false,
