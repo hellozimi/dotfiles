@@ -1,8 +1,18 @@
+local function find_biome_config()
+  -- Search for biome.json or biome.jsonc from current file's directory upward
+  local dir = vim.fn.expand("%:p:h")
+  while dir ~= "/" do
+    if vim.fn.filereadable(dir .. "/biome.json") == 1 or vim.fn.filereadable(dir .. "/biome.jsonc") == 1 then
+      return dir
+    end
+    dir = vim.fn.fnamemodify(dir, ":h")
+  end
+  return nil
+end
+
 local function biome_or_prettier()
-  -- Check for biome.json in the project root
-  local biome_json = vim.fn.glob(vim.fn.getcwd() .. "/biome.json")
-  if biome_json ~= "" then
-    return { "biome" }
+  if find_biome_config() then
+    return { "biome-check" }
   end
   return { "prettierd" }
 end
@@ -32,16 +42,17 @@ return {
       formatters = {
         ["goimports"] = { command = "/Users/simon/go/bin/goimports" },
         ["goimports-reviser"] = { prepend_args = { "-set-alias" } },
-        ["biome"] = {
+        ["biome-check"] = {
           command = "biome",
-          args = { "format", "--stdin-file-path", "$FILENAME" },
-          stdin = true,
+          args = { "check", "--write", "$FILENAME" },
+          stdin = false,
+          cwd = find_biome_config,
         },
       },
       format_on_save = {
         lsp_fallback = false,
         async = false,
-        timeout_ms = 1000,
+        timeout_ms = 2000,
       },
     })
 
