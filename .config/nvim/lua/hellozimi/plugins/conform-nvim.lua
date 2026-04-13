@@ -35,7 +35,7 @@ return {
         json = biome_or_prettier,
         yaml = { "prettierd" },
         markdown = { "prettierd" },
-        graphql = { "prettierd" },
+        graphql = biome_or_prettier,
         liquid = { "prettierd" },
         go = { "goimports", "goimports-reviser", "gofumpt" },
       },

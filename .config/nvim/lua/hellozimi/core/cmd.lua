@@ -29,6 +29,12 @@ vim.api.nvim_create_user_command('BDA', delete_all_buffers_preserve_layout, {})
 -- Create the abbreviation
 vim.cmd('cnoreabbrev bda BDA')
 
+-- auto enter insert mode when opening a terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*",
+  command = "startinsert",
+})
+
 -- auto save on buf leave/focus
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
   callback = function()
