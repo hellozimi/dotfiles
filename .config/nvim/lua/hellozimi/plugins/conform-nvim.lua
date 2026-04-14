@@ -37,7 +37,7 @@ return {
         markdown = { "prettierd" },
         graphql = biome_or_prettier,
         liquid = { "prettierd" },
-        go = { "goimports", "goimports-reviser", "gofumpt" },
+        go = { "gofmt" },
       },
       formatters = {
         ["goimports"] = { command = "/Users/simon/go/bin/goimports" },
