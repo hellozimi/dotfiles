@@ -20,6 +20,12 @@ function M.gotest_picker()
 
   pickers.new({}, {
     prompt_title = "Go Test Commands",
+    layout_strategy = "center",
+    layout_config = {
+      width = 0.4,
+      height = 0.3,
+      prompt_position = "top",
+    },
     finder = finders.new_table({
       results = commands,
       entry_maker = function(entry)
