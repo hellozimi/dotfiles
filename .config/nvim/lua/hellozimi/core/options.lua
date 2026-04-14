@@ -56,3 +56,5 @@ opt.foldtext = ""
 opt.foldlevel = 99
 opt.foldlevelstart = 4
 opt.foldnestmax = 4
+
+vim.lsp.inlay_hint.enable(false)
