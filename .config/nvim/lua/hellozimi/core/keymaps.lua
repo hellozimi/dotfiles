@@ -27,3 +27,6 @@ K.nnoremap("<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- 
 K.nnoremap("<leader>gl", ":Git log --oneline -75<CR>", { desc = "oneline git log the last 75 commits" })
 K.nnoremap("<leader>gB", ":GBrowse!<CR>", { desc = "Copies github permalink at line" })
 K.vnoremap("<leader>gB", ":GBrowse!<CR>", { desc = "Copies github permalink for selected lines" })
+
+-- go test picker
+K.nnoremap("<leader>gt", ":GoTestPicker<CR>", { desc = "Open Go test command picker" })
