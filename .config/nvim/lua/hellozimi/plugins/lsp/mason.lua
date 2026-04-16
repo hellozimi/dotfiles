@@ -91,51 +91,21 @@ return {
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf, silent = true }
 
-        -- set keybinds
-        opts.desc = "Show LSP references"
-        K.nnoremap("gR", function()
-          require("telescope.builtin").lsp_references({
-            include_current_line = true,
-            show_line = false,
-          })
-        end, opts)
-
-        opts.desc = "Go to declaration"
-        K.nnoremap("gD", function() vim.lsp.buf.declaration() end, opts)
-
-        opts.desc = "Show LSP definitions"
-        K.nnoremap("gd", function() require("telescope.builtin").lsp_definitions({ show_line = false }) end, opts)
-
-        opts.desc = "Show LSP implementations"
-        K.nnoremap("gi", function() require("telescope.builtin").lsp_implementations({ show_line = false }) end, opts)
-
-        opts.desc = "Show LSP type definitions"
-        K.nnoremap("gt", function() require("telescope.builtin").lsp_type_definitions({ show_line = false }) end, opts)
-
-        opts.desc = "See available code actions"
-        K.nnoremap("<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-        K.vnoremap("<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+        -- -- set keybinds
+        -- opts.desc = "See available code actions"
+        -- K.nnoremap("<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
         opts.desc = "Smart rename"
         K.nnoremap("<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
-
-        opts.desc = "Show buffer diagnostics"
-        K.nnoremap("<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
         opts.desc = "Show line diagnostics"
         K.nnoremap("<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
         opts.desc = "Go to previous diagnostic"
         K.nnoremap("[d", function(opts) vim.diagnostic.jump({ opts, count = -1, float = true }) end, opts) -- jump to previous diagnostic in buffer
-
+        --
         opts.desc = "Go to next diagnostic"
         K.nnoremap("]d", function(opts) vim.diagnostic.jump({ opts, count = 1, float = true }) end, opts) -- jump to previous diagnostic in buffer
-
-        opts.desc = "Show documentation for what is under cursor"
-        K.nnoremap("K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-
-        opts.desc = "Restart LSP"
-        K.nnoremap("<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
       end,
     })
 
